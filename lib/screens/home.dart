@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shpp/screens/about.dart';
 import 'package:shpp/screens/landing.dart';
 import 'package:shpp/screens/navbar.dart';
 import 'package:shpp/shared/size_config.dart';
@@ -36,7 +37,7 @@ class Home extends StatelessWidget {
                   child: Column(
                     children: const [
                       Landing(),
-                      // Landing(),
+                      About(),
                     ],
                   ),
                 ),

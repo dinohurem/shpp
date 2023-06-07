@@ -58,14 +58,13 @@ class _LandingState extends State<Landing> {
                           height: SizeConfig.safeBlockVertical! * 3,
                         ),
                         Text(
-                          'Saznajte vise o obnovljivim izvorima energije sa SHPP-om.',
+                          'Saznajte više o obnovljivim izvorima energije sa SHPP-om.',
                           style: GoogleFonts.mulish(
                             fontSize: SizeConfig.safeBlockVertical! * 1.75,
                             fontWeight: FontWeight.w400,
                             color: Theme.of(context).primaryColorDark,
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
