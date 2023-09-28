@@ -28,14 +28,14 @@ class Home extends StatelessWidget {
               ],
               tileMode: TileMode.clamp),
         ),
-        child: Center(
+        child: const Center(
           child: Column(
             children: [
-              const Navbar(),
+              Navbar(),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    children: const [
+                    children: [
                       Landing(),
                       About(),
                     ],

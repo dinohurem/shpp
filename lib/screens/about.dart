@@ -99,7 +99,6 @@ class About extends StatelessWidget {
                     ),
                     SizedBox(
                       height: SizeConfig.safeBlockVertical! * 30,
-                      width: SizeConfig.safeBlockHorizontal! * 50,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -113,18 +112,19 @@ class About extends StatelessWidget {
                                   Icon(
                                     Icons.recycling,
                                     color: Theme.of(context).primaryColorDark,
-                                    size: SizeConfig.safeBlockVertical! * 3.5,
+                                    size: SizeConfig.safeBlockVertical! * 3,
                                   ),
-                                  Flexible(
-                                    child: Text(
-                                      'Koristimo obnovljive izvore energije',
-                                      style: GoogleFonts.mulish(
-                                        fontSize:
-                                            SizeConfig.safeBlockVertical! * 1.5,
-                                        fontWeight: FontWeight.w900,
-                                        color:
-                                            Theme.of(context).primaryColorDark,
-                                      ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.25,
+                                  ),
+                                  Text(
+                                    'Koristimo obnovljive izvore energije',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w900,
+                                      color: Theme.of(context).primaryColorDark,
                                     ),
                                   ),
                                 ],
@@ -132,16 +132,24 @@ class About extends StatelessWidget {
                               SizedBox(
                                 height: SizeConfig.safeBlockVertical! * 0.5,
                               ),
-                              Text(
-                                'Ugradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
-                                style: GoogleFonts.mulish(
-                                  fontSize:
-                                      SizeConfig.safeBlockVertical! * 1.25,
-                                  fontWeight: FontWeight.w400,
-                                  color: Theme.of(context).primaryColorDark,
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: SizeConfig.safeBlockHorizontal! * 1.75,
+                                ),
+                                child: Text(
+                                  'Ugradnjom najnovijih svjetskih tehnologija\ndo bolje energetske efikasnosti.',
+                                  style: GoogleFonts.mulish(
+                                    fontSize:
+                                        SizeConfig.safeBlockVertical! * 1.25,
+                                    fontWeight: FontWeight.w400,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
                                 ),
                               ),
                             ],
+                          ),
+                          SizedBox(
+                            width: SizeConfig.safeBlockHorizontal! * 0.5,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,18 +161,19 @@ class About extends StatelessWidget {
                                   Icon(
                                     Icons.energy_savings_leaf,
                                     color: Theme.of(context).primaryColorDark,
-                                    size: SizeConfig.safeBlockVertical! * 3.5,
+                                    size: SizeConfig.safeBlockVertical! * 3,
                                   ),
-                                  Flexible(
-                                    child: Text(
-                                      'Koristimo obnovljive izvore energije',
-                                      style: GoogleFonts.mulish(
-                                        fontSize:
-                                            SizeConfig.safeBlockVertical! * 1.5,
-                                        fontWeight: FontWeight.w900,
-                                        color:
-                                            Theme.of(context).primaryColorDark,
-                                      ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.25,
+                                  ),
+                                  Text(
+                                    'Koristimo obnovljive izvore energije',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w900,
+                                      color: Theme.of(context).primaryColorDark,
                                     ),
                                   ),
                                 ],
@@ -173,7 +182,7 @@ class About extends StatelessWidget {
                                 height: SizeConfig.safeBlockVertical! * 0.5,
                               ),
                               Text(
-                                'Ugradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
+                                'Ugradnjom najnovijih svjetskih tehnologija\ndo bolje energetske efikasnosti.',
                                 style: GoogleFonts.mulish(
                                   fontSize:
                                       SizeConfig.safeBlockVertical! * 1.25,

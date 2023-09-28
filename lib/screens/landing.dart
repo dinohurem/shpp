@@ -16,7 +16,7 @@ class _LandingState extends State<Landing> {
   //TODO: Get this image list from firebase.
   final List<String> images = [
     'assets/images/dhl.jpg',
-    'assets/images/dhl.jpg',
+    'assets/images/mba.png',
     'assets/images/dhl.jpg',
     'assets/images/dhl.jpg',
     'assets/images/dhl.jpg',
@@ -144,9 +144,11 @@ class _LandingState extends State<Landing> {
                             opacity: !_isHovering[index] ? 0.3 : 1,
                             child: CircleAvatar(
                               radius: SizeConfig.safeBlockVertical! * 5,
+                              // TODO: Add Image.network from firebase and boxfit.
                               backgroundImage: AssetImage(
                                 images[index],
                               ),
+                              backgroundColor: Colors.transparent,
                             ),
                           ),
                         ),
