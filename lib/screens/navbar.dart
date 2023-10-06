@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:shpp/shared/navbar_option.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Navbar extends StatelessWidget {
-  const Navbar({super.key});
+  final Function(int index) onOptionSelected;
+  const Navbar({
+    super.key,
+    required this.onOptionSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +19,17 @@ class Navbar extends StatelessWidget {
           SizedBox(
             width: SizeConfig.safeBlockHorizontal! * 20,
           ),
-          Flexible(child: Image.asset('assets/images/logo.png')),
+          InkWell(
+              onTap: () => onOptionSelected(0),
+              child: Image.asset('assets/images/logo.png')),
           SizedBox(
-            width: SizeConfig.safeBlockHorizontal! * 31,
+            width: SizeConfig.safeBlockHorizontal! * 23.5,
           ),
           Flexible(
-            child: Text(
-              'O nama',
-              style: GoogleFonts.mulish(
-                fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                fontWeight: FontWeight.w400,
-                color: Theme.of(context).primaryColorDark,
+            child: GestureDetector(
+              onTap: () => onOptionSelected(0),
+              child: const NavbarOption(
+                text: 'Početna',
               ),
             ),
           ),
@@ -33,12 +37,10 @@ class Navbar extends StatelessWidget {
             width: SizeConfig.safeBlockHorizontal! * 2,
           ),
           Flexible(
-            child: Text(
-              'Usluge',
-              style: GoogleFonts.mulish(
-                fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                fontWeight: FontWeight.w400,
-                color: Theme.of(context).primaryColorDark,
+            child: GestureDetector(
+              onTap: () => onOptionSelected(1),
+              child: const NavbarOption(
+                text: 'O nama',
               ),
             ),
           ),
@@ -46,12 +48,10 @@ class Navbar extends StatelessWidget {
             width: SizeConfig.safeBlockHorizontal! * 2,
           ),
           Flexible(
-            child: Text(
-              'Projekti',
-              style: GoogleFonts.mulish(
-                fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                fontWeight: FontWeight.w400,
-                color: Theme.of(context).primaryColorDark,
+            child: GestureDetector(
+              onTap: () => onOptionSelected(2),
+              child: const NavbarOption(
+                text: 'Usluge',
               ),
             ),
           ),
@@ -59,12 +59,10 @@ class Navbar extends StatelessWidget {
             width: SizeConfig.safeBlockHorizontal! * 2,
           ),
           Flexible(
-            child: Text(
-              'Preporuke',
-              style: GoogleFonts.mulish(
-                fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                fontWeight: FontWeight.w400,
-                color: Theme.of(context).primaryColorDark,
+            child: GestureDetector(
+              onTap: () => onOptionSelected(3),
+              child: const NavbarOption(
+                text: 'Projekti',
               ),
             ),
           ),
@@ -72,12 +70,21 @@ class Navbar extends StatelessWidget {
             width: SizeConfig.safeBlockHorizontal! * 2,
           ),
           Flexible(
-            child: Text(
-              'Kontakt',
-              style: GoogleFonts.mulish(
-                fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                fontWeight: FontWeight.w400,
-                color: Theme.of(context).primaryColorDark,
+            child: GestureDetector(
+              onTap: () => onOptionSelected(4),
+              child: const NavbarOption(
+                text: 'Novosti',
+              ),
+            ),
+          ),
+          SizedBox(
+            width: SizeConfig.safeBlockHorizontal! * 2,
+          ),
+          Flexible(
+            child: GestureDetector(
+              onTap: () => onOptionSelected(5),
+              child: const NavbarOption(
+                text: 'Kontakt',
               ),
             ),
           ),

@@ -1,24 +1,31 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shpp/shared/icon_card.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class About extends StatelessWidget {
-  const About({super.key});
+  final GlobalKey globalKey;
+  const About({
+    super.key,
+    required this.globalKey,
+  });
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: SizeConfig.safeBlockVertical! * 5,
-        ),
-        child: SizedBox(
-          height: SizeConfig.safeBlockVertical! * 90,
-          width: SizeConfig.safeBlockHorizontal! * 70,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: SizeConfig.safeBlockVertical! * 10,
+      ),
+      child: SizedBox(
+        width: SizeConfig.safeBlockHorizontal! * 70,
+        child: Center(
+          key: globalKey,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
                 child: Column(
@@ -27,6 +34,13 @@ class About extends StatelessWidget {
                       height: SizeConfig.safeBlockVertical! * 65,
                       width: SizeConfig.safeBlockHorizontal! * 25,
                       decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 3,
+                          ),
+                        ],
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(
                               SizeConfig.safeBlockHorizontal! * 20),
@@ -38,7 +52,7 @@ class About extends StatelessWidget {
                               SizeConfig.safeBlockHorizontal! * 20),
                         ),
                         image: const DecorationImage(
-                          image: AssetImage('images/panels.jpg'),
+                          image: AssetImage('images/panels2.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -64,8 +78,10 @@ class About extends StatelessWidget {
                     SizedBox(
                       height: SizeConfig.safeBlockVertical! * 3,
                     ),
-                    Text(
+                    AutoSizeText(
                       'Proizvodimo električnu energiju\niz obnovljivih izvora',
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.mulish(
                         fontSize: SizeConfig.safeBlockVertical! * 3,
                         fontWeight: FontWeight.w800,
@@ -75,13 +91,15 @@ class About extends StatelessWidget {
                     SizedBox(
                       height: SizeConfig.safeBlockVertical! * 3,
                     ),
-                    Text(
-                      'SHPP d.o.o. Sarajevo je nastao kao potreba za zaštitom čovjekove okoline i potenciranja ulaganja u obnovljive izvore električne energije, bilo da se radi o malim hidroelektranama, fotovoltaik postrojenjima, elektranama na vjetar, kogeneraciji ili postrojenjima na bio gas.',
+                    AutoSizeText(
+                      'SHPP d.o.o. Sarajevo je nastao kao potreba za zaštitom čovjekove okoline i potenciranja ulaganja u obnovljive izvore električne energije, bilo da se radi o malim hidroelektranama, fotovoltaik postrojenjima, elektranama na vjetar, kogeneraciji ili postrojenjima na biogas.',
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.mulish(
                         fontSize: SizeConfig.safeBlockVertical! * 1.5,
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).primaryColorDark,
                       ),
+                      maxLines: 4,
                     ),
                     SizedBox(
                       height: SizeConfig.safeBlockVertical! * 3,
@@ -95,105 +113,36 @@ class About extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: SizeConfig.safeBlockVertical! * 3,
+                      height: SizeConfig.safeBlockVertical! * 6,
                     ),
-                    SizedBox(
-                      height: SizeConfig.safeBlockVertical! * 30,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    Icons.recycling,
-                                    color: Theme.of(context).primaryColorDark,
-                                    size: SizeConfig.safeBlockVertical! * 3,
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        SizeConfig.safeBlockHorizontal! * 0.25,
-                                  ),
-                                  Text(
-                                    'Koristimo obnovljive izvore energije',
-                                    style: GoogleFonts.mulish(
-                                      fontSize:
-                                          SizeConfig.safeBlockVertical! * 1.5,
-                                      fontWeight: FontWeight.w900,
-                                      color: Theme.of(context).primaryColorDark,
-                                    ),
-                                  ),
-                                ],
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Flexible(
+                              child: IconCard(
+                                title: 'UŠTEDA',
+                                icon: FontAwesomeIcons.recycle,
+                                text:
+                                    'Mi smo najbolji saveznik u smanjenju Vaših troškova.\n\nULTRA uređaj za štednju električne energije pravi uštedu bez obaranja napona. Prosječni procenat uštede kod pretežno induktivnih potrošača (motori, kompresori, ventilatori, klima komore itd) je 11 %. Omjer uloženog novca i povrata investicije je izuzetno dobar. Povrat investicije (ROI) je u prosjeku 17 mjeseci.',
                               ),
-                              SizedBox(
-                                height: SizeConfig.safeBlockVertical! * 0.5,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: SizeConfig.safeBlockHorizontal! * 1.75,
-                                ),
-                                child: Text(
-                                  'Ugradnjom najnovijih svjetskih tehnologija\ndo bolje energetske efikasnosti.',
-                                  style: GoogleFonts.mulish(
-                                    fontSize:
-                                        SizeConfig.safeBlockVertical! * 1.25,
-                                    fontWeight: FontWeight.w400,
-                                    color: Theme.of(context).primaryColorDark,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: SizeConfig.safeBlockHorizontal! * 0.5,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    Icons.energy_savings_leaf,
-                                    color: Theme.of(context).primaryColorDark,
-                                    size: SizeConfig.safeBlockVertical! * 3,
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        SizeConfig.safeBlockHorizontal! * 0.25,
-                                  ),
-                                  Text(
-                                    'Koristimo obnovljive izvore energije',
-                                    style: GoogleFonts.mulish(
-                                      fontSize:
-                                          SizeConfig.safeBlockVertical! * 1.5,
-                                      fontWeight: FontWeight.w900,
-                                      color: Theme.of(context).primaryColorDark,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: SizeConfig.safeBlockVertical! * 0.5,
-                              ),
-                              Text(
-                                'Ugradnjom najnovijih svjetskih tehnologija\ndo bolje energetske efikasnosti.',
-                                style: GoogleFonts.mulish(
-                                  fontSize:
-                                      SizeConfig.safeBlockVertical! * 1.25,
-                                  fontWeight: FontWeight.w400,
-                                  color: Theme.of(context).primaryColorDark,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                            SizedBox(
+                              width: SizeConfig.safeBlockHorizontal! * 0.75,
+                            ),
+                            const IconCard(
+                              title: 'ZAŠTITA OKOLINE',
+                              icon: FontAwesomeIcons.seedling,
+                              text:
+                                  'Proizvodnjom električne energije iz obnovljivih izvora čuvamo prirodu i štitimo čovjekovu okolinu.\n\nUpotrebom uređaja za štednju električne energije reduciramo emisiju CO2, SO2, NOx...Najnovijim svjetskim tehnologijama do veće energetske efikasnosti.',
+                            ),
+                          ],
+                        ),
+                      ],
                     )
                   ],
                 ),
