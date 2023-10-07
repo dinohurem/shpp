@@ -1,8 +1,13 @@
+// ignore_for_file: depend_on_referenced_packages, prefer_const_constructors
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/config/firebase_options.dart';
-import 'package:shpp/screens/home.dart';
+import 'package:shpp/shared/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,15 +17,24 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  usePathUrlStrategy();
+  final goRouter = router;
+  runApp(MyApp(goRouter: goRouter));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final GoRouter goRouter;
+  const MyApp({
+    super.key,
+    required this.goRouter,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {PointerDeviceKind.mouse},
+      ),
       debugShowCheckedModeBanner: false,
       title: 'SHPP',
       theme: ThemeData(
@@ -32,7 +46,7 @@ class MyApp extends StatelessWidget {
         primaryColorLight: const Color.fromARGB(255, 229, 236, 253),
         primaryColorDark: const Color(0xFF2e3b4c),
       ),
-      home: const Home(),
+      routerConfig: goRouter,
     );
   }
 }

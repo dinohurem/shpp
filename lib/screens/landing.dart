@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Landing extends StatefulWidget {
-  const Landing({super.key});
+  final GlobalKey globalKey;
+  const Landing({
+    super.key,
+    required this.globalKey,
+  });
 
   @override
   State<Landing> createState() => _LandingState();
 }
 
 class _LandingState extends State<Landing> {
-  // ignore: prefer_final_fields
+  // ignore: prefer_final_fields, unused_field
   late var _isHovering = [false, false, false, false, false];
 
   //TODO: Get this image list from firebase.
   final List<String> images = [
-    'assets/images/dhl.jpg',
+    'assets/images/dhl.png',
+    'assets/images/violeta.png',
     'assets/images/mba.png',
-    'assets/images/dhl.jpg',
-    'assets/images/dhl.jpg',
-    'assets/images/dhl.jpg',
+    'assets/images/migg.png',
+    'assets/images/madi.png',
   ];
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Center(
+      key: widget.globalKey,
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: SizeConfig.safeBlockVertical! * 2,
@@ -65,6 +72,15 @@ class _LandingState extends State<Landing> {
                             color: Theme.of(context).primaryColorDark,
                           ),
                         ),
+                        SizedBox(
+                          height: SizeConfig.safeBlockVertical! * 4,
+                        ),
+                        ActionButton(
+                          text: 'Saznaj više',
+                          onTap: () {
+                            GoRouter.of(context).go('/about');
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -75,6 +91,13 @@ class _LandingState extends State<Landing> {
                           height: SizeConfig.safeBlockVertical! * 65,
                           width: SizeConfig.safeBlockHorizontal! * 25,
                           decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 3,
+                              ),
+                            ],
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(
                                   SizeConfig.safeBlockHorizontal! * 20),
@@ -113,14 +136,18 @@ class _LandingState extends State<Landing> {
               Flexible(
                 child: ListView.builder(
                   shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
                   scrollDirection: Axis.horizontal,
                   itemCount: images.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(
-                        right: SizeConfig.safeBlockHorizontal! * 4,
+                        right: SizeConfig.safeBlockHorizontal! * 5,
                       ),
                       child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
                         onEnter: (event) {
                           setState(() {
                             _isHovering[index] = true;
@@ -131,24 +158,16 @@ class _LandingState extends State<Landing> {
                             _isHovering[index] = false;
                           });
                         },
-                        child: Container(
-                          foregroundDecoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                SizeConfig.safeBlockHorizontal! * 2.75),
-                            color: !_isHovering[index]
-                                ? Colors.grey
-                                : Colors.transparent,
-                            backgroundBlendMode: BlendMode.saturation,
-                          ),
-                          child: Opacity(
-                            opacity: !_isHovering[index] ? 0.3 : 1,
-                            child: CircleAvatar(
-                              radius: SizeConfig.safeBlockVertical! * 5,
-                              // TODO: Add Image.network from firebase and boxfit.
-                              backgroundImage: AssetImage(
-                                images[index],
+                        child: Opacity(
+                          opacity: _isHovering[index] ? 1 : 0.3,
+                          child: Container(
+                            height: SizeConfig.safeBlockVertical! * 4,
+                            width: SizeConfig.safeBlockHorizontal! * 5,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(images[index]),
+                                fit: BoxFit.contain,
                               ),
-                              backgroundColor: Colors.transparent,
                             ),
                           ),
                         ),
