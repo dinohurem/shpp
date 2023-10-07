@@ -46,7 +46,7 @@ class NewsItem extends StatelessWidget {
                     topRight: Radius.zero,
                   ),
                   image: DecorationImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     image: NetworkImage(
                       url,
                     ),

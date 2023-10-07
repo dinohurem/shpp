@@ -17,6 +17,7 @@ dependencies:
   auto_size_text: ^3.0.0
   before_after: ^3.0.0+1
   scroll_snap_list: ^0.9.1
+  url_launcher: ^6.1.14
 
 
 dev_dependencies:

@@ -33,7 +33,7 @@ class NavbarOptionState extends State<NavbarOption> {
         widget.text,
         style: GoogleFonts.mulish(
           fontSize: SizeConfig.safeBlockVertical! * 1.55,
-          fontWeight: _isHovering ? FontWeight.w600 : FontWeight.w400,
+          fontWeight: _isHovering ? FontWeight.w800 : FontWeight.w600,
           color: Theme.of(context).primaryColorDark,
         ),
       ),

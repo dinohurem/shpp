@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shpp/screens/about.dart';
+import 'package:shpp/screens/contact.dart';
+import 'package:shpp/screens/footer.dart';
 import 'package:shpp/screens/landing.dart';
 import 'package:shpp/screens/navbar.dart';
 import 'package:shpp/screens/news.dart';
@@ -25,7 +27,6 @@ class _HomeState extends State<Home> {
   final GlobalKey _servicesKey = GlobalKey();
   final GlobalKey _showcaseKey = GlobalKey();
   final GlobalKey _newsKey = GlobalKey();
-  // ignore: unused_field
   final GlobalKey _contactKey = GlobalKey();
 
   final ScrollController _scrollController = ScrollController();
@@ -66,6 +67,10 @@ class _HomeState extends State<Home> {
         _scrollToSection(_newsKey);
         router.go('/news');
         break;
+      case 5:
+        _scrollToSection(_contactKey);
+        router.go('/contact');
+        break;
     }
   }
 
@@ -76,10 +81,12 @@ class _HomeState extends State<Home> {
     } else if (location == '/about') {
       _scrollToSection(router.routerDelegate.navigatorKey);
     } else if (location == '/services') {
-      _scrollToSection(_servicesKey);
+      _scrollToSection(router.routerDelegate.navigatorKey);
     } else if (location == '/showcase') {
       _scrollToSection(router.routerDelegate.navigatorKey);
     } else if (location == '/news') {
+      _scrollToSection(router.routerDelegate.navigatorKey);
+    } else if (location == '/contact') {
       _scrollToSection(router.routerDelegate.navigatorKey);
     }
   }
@@ -231,14 +238,16 @@ class _HomeState extends State<Home> {
                           indent: SizeConfig.safeBlockHorizontal! * 10,
                           endIndent: SizeConfig.safeBlockHorizontal! * 10,
                         ),
-                        Services(globalKey: _contactKey),
+                        Contact(globalKey: _contactKey),
                         Divider(
                           height: 0.25,
                           color: Colors.grey.withOpacity(0.15),
                           indent: SizeConfig.safeBlockHorizontal! * 10,
                           endIndent: SizeConfig.safeBlockHorizontal! * 10,
                         ),
-                        Services(globalKey: _servicesKey),
+                        Footer(
+                          onOptionSelected: _onNavbarOptionSelected,
+                        ),
                         Divider(
                           height: 0.25,
                           color: Colors.grey.withOpacity(0.15),

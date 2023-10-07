@@ -166,7 +166,7 @@ class _ShowcaseState extends State<Showcase> {
                     ),
                     Flexible(
                       child: AutoSizeText(
-                        'Proizvodnjom iz obnovljivih izvora čuvamo prirodu i štitimo okolinu.Mi ćemo biti Vaš najbolji saveznik u smanjenju Vaših troškova.\nUgradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
+                        'Proizvodnjom iz obnovljivih izvora čuvamo prirodu i štitimo okolinu. Mi ćemo biti Vaš najbolji saveznik u smanjenju Vaših troškova.\nUgradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
                         presetFontSizes: [
                           SizeConfig.safeBlockVertical! * 1.5,
                           SizeConfig.safeBlockVertical! * 1.25,
