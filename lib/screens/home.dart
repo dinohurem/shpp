@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shpp/screens/about.dart';
+import 'package:shpp/screens/about_details.dart';
 import 'package:shpp/screens/contact.dart';
 import 'package:shpp/screens/footer.dart';
 import 'package:shpp/screens/landing.dart';
@@ -211,6 +212,13 @@ class _HomeState extends State<Home> {
                           endIndent: SizeConfig.safeBlockHorizontal! * 10,
                         ),
                         About(globalKey: _aboutKey),
+                        Divider(
+                          height: 0.25,
+                          color: Colors.grey.withOpacity(0.15),
+                          indent: SizeConfig.safeBlockHorizontal! * 10,
+                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
+                        ),
+                        const AboutDetails(),
                         Divider(
                           height: 0.25,
                           color: Colors.grey.withOpacity(0.15),

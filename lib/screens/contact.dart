@@ -18,6 +18,7 @@ class Contact extends StatefulWidget {
 
 class _ContactState extends State<Contact> {
   late String email, text;
+  final _formKey = GlobalKey<FormState>();
 
   String? encodeQueryParameters(Map<String, String> params) {
     return params.entries
@@ -65,181 +66,313 @@ class _ContactState extends State<Contact> {
                   SizedBox(
                     height: SizeConfig.safeBlockVertical! * 2,
                   ),
-                  SizedBox(
-                    width: SizeConfig.safeBlockHorizontal! * 32,
-                    child: Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.phone,
-                          size: SizeConfig.safeBlockVertical! * 2,
-                          color: Theme.of(context).primaryColorDark,
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal! * 1.25,
-                        ),
-                        Text(
-                          '+387 61 214 113',
-                          style: GoogleFonts.mulish(
-                            fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).primaryColorDark,
+                  Center(
+                    child: SizedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.phone,
+                                    size: SizeConfig.safeBlockVertical! * 2,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.5,
+                                  ),
+                                  Text(
+                                    '+387 61 214 113',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context).primaryColorDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: SizeConfig.safeBlockVertical! * 2,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.envelope,
+                                    size: SizeConfig.safeBlockVertical! * 2,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.5,
+                                  ),
+                                  Text(
+                                    'shpp@shpp.ba',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context).primaryColorDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: SizeConfig.safeBlockVertical! * 2,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.locationDot,
+                                    size: SizeConfig.safeBlockVertical! * 2,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.5,
+                                  ),
+                                  Text(
+                                    'Safvet-bega Bašagića 24\n71000 Sarajevo\nBosna i Hercegovina',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context).primaryColorDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal! * 3,
-                        ),
-                        Icon(
-                          FontAwesomeIcons.phone,
-                          size: SizeConfig.safeBlockVertical! * 2,
-                          color: Theme.of(context).primaryColorDark,
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal! * 1.25,
-                        ),
-                        Text(
-                          '+387 62 451 737',
-                          style: GoogleFonts.mulish(
-                            fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).primaryColorDark,
+                          SizedBox(
+                            width: SizeConfig.safeBlockHorizontal! * 2,
                           ),
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal! * 3,
-                        ),
-                        Icon(
-                          FontAwesomeIcons.phone,
-                          size: SizeConfig.safeBlockVertical! * 2,
-                          color: Theme.of(context).primaryColorDark,
-                        ),
-                        SizedBox(
-                          width: SizeConfig.safeBlockHorizontal! * 1.25,
-                        ),
-                        Text(
-                          '+387 63 343 320',
-                          style: GoogleFonts.mulish(
-                            fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).primaryColorDark,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.phone,
+                                    size: SizeConfig.safeBlockVertical! * 2,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.5,
+                                  ),
+                                  Text(
+                                    '+387 62 451 737',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context).primaryColorDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: SizeConfig.safeBlockVertical! * 2,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.envelope,
+                                    size: SizeConfig.safeBlockVertical! * 2,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.5,
+                                  ),
+                                  Text(
+                                    'amer.jerlagic@shpp.ba',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context).primaryColorDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            width: SizeConfig.safeBlockHorizontal! * 2,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.phone,
+                                    size: SizeConfig.safeBlockVertical! * 2,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        SizeConfig.safeBlockHorizontal! * 0.5,
+                                  ),
+                                  Text(
+                                    '+387 61 526 066',
+                                    style: GoogleFonts.mulish(
+                                      fontSize:
+                                          SizeConfig.safeBlockVertical! * 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context).primaryColorDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: SizeConfig.safeBlockVertical! * 4,
                   ),
-                  SizedBox(
-                    width: SizeConfig.safeBlockHorizontal! * 32,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Email',
-                          style: GoogleFonts.mulish(
-                            fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).primaryColorDark,
-                          ),
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical!,
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            hintStyle: const TextStyle(
-                              color: Colors.grey,
+                  Form(
+                    key: _formKey,
+                    child: SizedBox(
+                      width: SizeConfig.safeBlockHorizontal! * 32,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Email',
+                            style: GoogleFonts.mulish(
+                              fontSize: SizeConfig.safeBlockVertical! * 1.5,
                               fontWeight: FontWeight.w500,
-                            ),
-                            fillColor: Theme.of(context).primaryColorDark,
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: SizeConfig.safeBlockVertical! * 2.5,
-                              horizontal: SizeConfig.safeBlockHorizontal! * 2,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                SizeConfig.safeBlockVertical!,
-                              ),
-                              borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.secondary,
-                              ),
+                              color: Theme.of(context).primaryColorDark,
                             ),
                           ),
-                          onChanged: (val) {
-                            setState(() => email = val);
-                          },
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical! * 3,
-                        ),
-                        Text(
-                          'Poruka',
-                          style: GoogleFonts.mulish(
-                            fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).primaryColorDark,
+                          SizedBox(
+                            height: SizeConfig.safeBlockVertical!,
                           ),
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical!,
-                        ),
-                        TextFormField(
-                          minLines: 5, //Normal textInputField will be displayed
-                          maxLines: 8,
-                          decoration: InputDecoration(
-                            hintText: 'Unesite poruku...',
-                            hintStyle: const TextStyle(
-                              color: Colors.grey,
+                          TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty ||
+                                  !RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                                      .hasMatch(value)) {
+                                return 'Molimo unesite validnu email adresu.';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Email',
+                              hintStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              fillColor: Theme.of(context).primaryColorDark,
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.safeBlockVertical! * 2.5,
+                                horizontal: SizeConfig.safeBlockHorizontal! * 2,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  SizeConfig.safeBlockVertical!,
+                                ),
+                                borderSide: BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                              ),
+                            ),
+                            onChanged: (val) {
+                              setState(() => email = val);
+                            },
+                          ),
+                          SizedBox(
+                            height: SizeConfig.safeBlockVertical! * 3,
+                          ),
+                          Text(
+                            'Poruka',
+                            style: GoogleFonts.mulish(
+                              fontSize: SizeConfig.safeBlockVertical! * 1.5,
                               fontWeight: FontWeight.w500,
-                            ),
-                            fillColor: Theme.of(context).primaryColorDark,
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: SizeConfig.safeBlockVertical! * 2.5,
-                              horizontal: SizeConfig.safeBlockHorizontal! * 2,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                SizeConfig.safeBlockVertical!,
-                              ),
-                              borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.secondary,
-                              ),
+                              color: Theme.of(context).primaryColorDark,
                             ),
                           ),
-                          onChanged: (val) {
-                            setState(() => text = val);
-                          },
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical! * 3,
-                        ),
-                        ActionButton(
-                          text: 'Pošalji poruku',
-                          onTap: () async {
-                            String email = Uri.encodeComponent("shpp@shpp.ba");
-                            String subject =
-                                Uri.encodeComponent("Zdravo SHPP - $email");
-                            String body = Uri.encodeComponent(text);
-                            Uri mail = Uri.parse(
-                                "mailto:$email?subject=$subject&body=$body");
+                          SizedBox(
+                            height: SizeConfig.safeBlockVertical!,
+                          ),
+                          TextFormField(
+                            minLines:
+                                5, //Normal textInputField will be displayed
+                            maxLines: 8,
+                            decoration: InputDecoration(
+                              hintText: 'Unesite poruku...',
+                              hintStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              fillColor: Theme.of(context).primaryColorDark,
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.safeBlockVertical! * 2.5,
+                                horizontal: SizeConfig.safeBlockHorizontal! * 2,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  SizeConfig.safeBlockVertical!,
+                                ),
+                                borderSide: BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                              ),
+                            ),
+                            onChanged: (val) {
+                              setState(() => text = val);
+                            },
+                          ),
+                          SizedBox(
+                            height: SizeConfig.safeBlockVertical! * 3,
+                          ),
+                          ActionButton(
+                            text: 'Pošalji poruku',
+                            onTap: () async {
+                              if (_formKey.currentState!.validate()) {
+                                final Uri emailLaunchUri = Uri(
+                                  scheme: 'mailto',
+                                  path: 'shpp@shpp.ba',
+                                  query: encodeQueryParameters(<String, String>{
+                                    'subject': 'Zdravo SHPP - kontakt',
+                                    'body': text,
+                                  }),
+                                );
 
-                            final Uri emailLaunchUri = Uri(
-                              scheme: 'mailto',
-                              path: 'shpp@shpp.ba',
-                              query: encodeQueryParameters(<String, String>{
-                                'subject': 'Zdravo SHPP - $email',
-                              }),
-                            );
-
-                            if (await launchUrl(emailLaunchUri)) {
-                              //email app opened
-                            } else {
-                              //email app is not opened
-                            }
-                          },
-                        )
-                      ],
+                                if (await launchUrl(emailLaunchUri)) {
+                                  //email app opened
+                                } else {
+                                  //email app is not opened
+                                }
+                              }
+                              
+                            },
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

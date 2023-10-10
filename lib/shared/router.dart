@@ -22,12 +22,6 @@ final GoRouter router = GoRouter(
         ),
       ),
       GoRoute(
-        path: 'about-details',
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: AboutDetailsPage(),
-        ), // Placeholder, replace with DetailsPage later
-      ),
-      GoRoute(
         path: 'services',
         pageBuilder: (context, state) => const NoTransitionPage(
           child: Home(),

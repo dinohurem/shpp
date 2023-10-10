@@ -25,7 +25,19 @@ class Services extends StatelessWidget {
         width: SizeConfig.safeBlockHorizontal! * 70,
         child: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                'USLUGE'.toUpperCase(),
+                style: GoogleFonts.mulish(
+                  fontSize: SizeConfig.safeBlockVertical! * 1.5,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).primaryColorDark,
+                ),
+              ),
+              SizedBox(
+                height: SizeConfig.safeBlockVertical! * 3,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,35 +48,24 @@ class Services extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'USLUGE'.toUpperCase(),
-                            style: GoogleFonts.mulish(
-                              fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                              fontWeight: FontWeight.w700,
-                              color: Theme.of(context).primaryColorDark,
-                            ),
+                          const IconCard(
+                            narrowText: false,
+                            title:
+                                'PROIZVODNJA ELEKTRIČNE ENERGIJE IZ OBNOVLJIVIH IZVORA',
+                            icon: FontAwesomeIcons.solidSun,
+                            text:
+                                'Proizvodnja električne energije bazirana isključivo na obnovljivim izvorima električne energije, prije svega na obnovljivom potencijalu Bosne i Hercegovine.',
                           ),
                           SizedBox(
-                            height: SizeConfig.safeBlockVertical! * 3,
+                            height: SizeConfig.safeBlockVertical! * 10,
                           ),
-                          Text(
-                            'U dobrim ste rukama',
-                            style: GoogleFonts.mulish(
-                              fontSize: SizeConfig.safeBlockVertical! * 3,
-                              fontWeight: FontWeight.w800,
-                              color: Theme.of(context).primaryColorDark,
-                            ),
-                          ),
-                          SizedBox(
-                            height: SizeConfig.safeBlockVertical! * 2,
-                          ),
-                          Text(
-                            'Naše usluge pokrivaju čitav spektar obnovljivih izvora električne energije uz dodatne usluge koje komplementiraju vašem biznisu.\n\nNa ovaj način Vam nudimo sveobuhvatno i efikasno rješenje za dizajn i implementaciju Vaših projekata.',
-                            style: GoogleFonts.mulish(
-                              fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                              fontWeight: FontWeight.w500,
-                              color: Theme.of(context).primaryColorDark,
-                            ),
+                          const IconCard(
+                            narrowText: false,
+                            title:
+                                'PROJEKTOVANJE I UGRADNJA PUNIONICA ZA ELEKTROMOBILE',
+                            icon: FontAwesomeIcons.chargingStation,
+                            text:
+                                'Proizvodnja električne energije bazirana isključivo na obnovljivim izvorima električne energije, prije svega na obnovljivom potencijalu Bosne i Hercegovine.',
                           ),
                         ],
                       ),
@@ -77,8 +78,8 @@ class Services extends StatelessWidget {
                         const IconCard(
                           narrowText: false,
                           title:
-                              'PROIZVODNJA ELEKTRIČNE ENERGIJE IZ OBNOVLJIVIH IZVORA',
-                          icon: FontAwesomeIcons.solidLightbulb,
+                              'PROJEKTOVANJE, INŽENJERING I CONSULTING U OBLASTI FOTONAPONSKIH-SOLARNIH ELEKTRANA',
+                          icon: FontAwesomeIcons.solarPanel,
                           text:
                               'Proizvodnja električne energije bazirana isključivo na obnovljivim izvorima električne energije, prije svega na obnovljivom potencijalu Bosne i Hercegovine.',
                         ),
@@ -87,10 +88,10 @@ class Services extends StatelessWidget {
                         ),
                         const IconCard(
                           narrowText: false,
-                          title: 'KONSALTING',
-                          icon: FontAwesomeIcons.solidHandshake,
+                          title: 'KOMPENZACIJA REAKTIVNE ENERGIJE',
+                          icon: FontAwesomeIcons.batteryFull,
                           text:
-                              'U saradnji sa Vama i u skladu sa uočenim potrebama, analizirati ćemo sve aspekte i elemente priključenja elektroenergetskih objekata.',
+                              'U saradnji sa našim partnerima nudimo Vam usluge kompenzacije reaktivne energije po sistemu "ključ u ruke". Investicija u kompenzaciju reaktivne energije je ulaganje koje ima najkraći povrat investicije.',
                         ),
                       ],
                     ),
@@ -101,20 +102,21 @@ class Services extends StatelessWidget {
                       children: [
                         const IconCard(
                           narrowText: false,
-                          title: 'POSREDOVANJE U PRODAJI ELEKTRIČNE ENERGIJE',
-                          icon: FontAwesomeIcons.shieldHalved,
+                          title:
+                              'PROJEKTOVANJE I UGRADNJA OPREME ZA USTEDU ELEKTRIČNE ENERGIJE',
+                          icon: FontAwesomeIcons.plugCircleCheck,
                           text:
-                              'SHPP d.o.o. je partner u posredovanju u prodaji i snabdijevanju električnom energijom kompaniji Proenergy d.o.o.\n\nProenergy d.o.o. je lider po broju kupaca u Bosni i Hercegovini, nakon tri elektroprivrede sa većinskim državnim kapitalom.',
+                              'SHPP d.o.o. je partner u posredovanju u prodaji i snabdijevanju električnom energijom kompaniji Proenergy d.o.o.',
                         ),
                         SizedBox(
                           height: SizeConfig.safeBlockVertical! * 10,
                         ),
                         const IconCard(
                           narrowText: false,
-                          title: 'KOMPENZACIJA REAKTIVNE ENERGIJE',
-                          icon: FontAwesomeIcons.plugCirclePlus,
+                          title: 'POSREDOVANJE U PRODAJI ELEKTRIČNE ENERGIJE',
+                          icon: FontAwesomeIcons.handshake,
                           text:
-                              'U saradnji sa našim partnerima nudimo Vam usluge kompenzacije reaktivne energije po sistemu "ključ u ruke". Investicija u kompenzaciju reaktivne energije je ulaganje koje ima najkraći povrat investicije.',
+                              'SHPP d.o.o. je partner u posredovanju u prodaji i snabdijevanju električnom energijom kompaniji Proenergy d.o.o.\n\nProenergy d.o.o. je lider po broju kupaca u Bosni i Hercegovini, nakon tri elektroprivrede sa većinskim državnim kapitalom.',
                         ),
                       ],
                     ),

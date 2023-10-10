@@ -188,7 +188,7 @@ class _ShowcaseState extends State<Showcase> {
                 height: SizeConfig.safeBlockVertical! * 3,
               ),
               ActionButton(
-                text: 'Više informacija',
+                text: 'Svi naši projekti',
                 onTap: () {
                   GoRouter.of(context).go('/about');
                 },
