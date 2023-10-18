@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shpp/responsive.dart';
 import 'package:shpp/screens/about.dart';
 import 'package:shpp/screens/about_details.dart';
 import 'package:shpp/screens/contact.dart';
 import 'package:shpp/screens/footer.dart';
 import 'package:shpp/screens/landing.dart';
-import 'package:shpp/screens/navbar.dart';
 import 'package:shpp/screens/news.dart';
 import 'package:shpp/screens/services.dart';
 import 'package:shpp/screens/showcase.dart';
+import 'package:shpp/shared/custom_divider.dart';
+import 'package:shpp/shared/navbar_shell.dart';
 import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 
@@ -147,11 +149,125 @@ class _HomeState extends State<Home> {
               ),
             )
           : null,
-      body: Container(
-        width: SizeConfig.safeBlockHorizontal! * 100,
-        height: SizeConfig.safeBlockVertical! * 100,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
+      body: Responsive(
+        desktop: Container(
+          width: SizeConfig.safeBlockHorizontal! * 100,
+          height: SizeConfig.safeBlockVertical! * 100,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  const Color.fromARGB(255, 253, 252, 236),
+                  Theme.of(context).primaryColorLight,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: const [
+                  0.1,
+                  0.6,
+                ],
+                tileMode: TileMode.clamp),
+          ),
+          child: Center(
+            child: Column(
+              children: [
+                NavbarShell(
+                    showShadow: showShadow, action: _onNavbarOptionSelected),
+                Expanded(
+                  child: NotificationListener<ScrollEndNotification>(
+                    onNotification: _onScroll,
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          Landing(globalKey: _homeKey),
+                          const CustomDivider(),
+                          About(globalKey: _aboutKey),
+                          const CustomDivider(),
+                          const AboutDetails(),
+                          const CustomDivider(),
+                          Services(globalKey: _servicesKey),
+                          const CustomDivider(),
+                          Showcase(globalKey: _showcaseKey),
+                          const CustomDivider(),
+                          News(globalKey: _newsKey),
+                          const CustomDivider(),
+                          Contact(globalKey: _contactKey),
+                          const CustomDivider(),
+                          Footer(
+                            onOptionSelected: _onNavbarOptionSelected,
+                          ),
+                          const CustomDivider(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        tablet: Container(
+          width: SizeConfig.safeBlockHorizontal! * 100,
+          height: SizeConfig.safeBlockVertical! * 100,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  const Color.fromARGB(255, 253, 252, 236),
+                  Theme.of(context).primaryColorLight,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: const [
+                  0.1,
+                  0.6,
+                ],
+                tileMode: TileMode.clamp),
+          ),
+          child: Center(
+            child: Column(
+              children: [
+                // NavbarShell(
+                //     showShadow: showShadow, action: _onNavbarOptionSelected),
+                Expanded(
+                  child: NotificationListener<ScrollEndNotification>(
+                    onNotification: _onScroll,
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          Landing(globalKey: _homeKey),
+                          const CustomDivider(),
+                          About(globalKey: _aboutKey),
+                          const CustomDivider(),
+                          // ignore: prefer_const_constructors
+                          AboutDetails(),
+                          const CustomDivider(),
+                          Services(globalKey: _servicesKey),
+                          const CustomDivider(),
+                          Showcase(globalKey: _showcaseKey),
+                          const CustomDivider(),
+                          News(globalKey: _newsKey),
+                          const CustomDivider(),
+                          Contact(globalKey: _contactKey),
+                          const CustomDivider(),
+                          Footer(
+                            onOptionSelected: _onNavbarOptionSelected,
+                          ),
+                          const CustomDivider(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        mobile: Container(
+          width: SizeConfig.safeBlockHorizontal! * 100,
+          height: SizeConfig.safeBlockVertical! * 100,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
               colors: [
                 const Color.fromARGB(255, 253, 252, 236),
                 Theme.of(context).primaryColorLight,
@@ -162,112 +278,45 @@ class _HomeState extends State<Home> {
                 0.1,
                 0.6,
               ],
-              tileMode: TileMode.clamp),
-        ),
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  gradient: !showShadow
-                      ? null
-                      : LinearGradient(
-                          colors: [
-                            const Color.fromARGB(255, 253, 252, 236),
-                            Theme.of(context).primaryColorLight,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          stops: const [
-                            0.1,
-                            0.6,
-                          ],
-                          tileMode: TileMode.clamp),
-                  boxShadow: !showShadow
-                      ? null
-                      : [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 3,
+              tileMode: TileMode.clamp,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              children: [
+                //NavbarShell(showShadow: showShadow, action: _onNavbarOptionSelected),
+                Expanded(
+                  child: NotificationListener<ScrollEndNotification>(
+                    onNotification: _onScroll,
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          Landing(globalKey: _homeKey),
+                          const CustomDivider(),
+                          About(globalKey: _aboutKey),
+                          const CustomDivider(),
+                          const AboutDetails(),
+                          const CustomDivider(),
+                          Services(globalKey: _servicesKey),
+                          const CustomDivider(),
+                          Showcase(globalKey: _showcaseKey),
+                          const CustomDivider(),
+                          News(globalKey: _newsKey),
+                          const CustomDivider(),
+                          Contact(globalKey: _contactKey),
+                          const CustomDivider(),
+                          Footer(
+                            onOptionSelected: _onNavbarOptionSelected,
                           ),
+                          const CustomDivider(),
                         ],
-                ),
-                child: Navbar(
-                  onOptionSelected: _onNavbarOptionSelected,
-                ),
-              ),
-              Expanded(
-                child: NotificationListener<ScrollEndNotification>(
-                  onNotification: _onScroll,
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    child: Column(
-                      children: [
-                        Landing(globalKey: _homeKey),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        About(globalKey: _aboutKey),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        const AboutDetails(),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        Services(globalKey: _servicesKey),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        Showcase(globalKey: _showcaseKey),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        News(globalKey: _newsKey),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        Contact(globalKey: _contactKey),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                        Footer(
-                          onOptionSelected: _onNavbarOptionSelected,
-                        ),
-                        Divider(
-                          height: 0.25,
-                          color: Colors.grey.withOpacity(0.15),
-                          indent: SizeConfig.safeBlockHorizontal! * 10,
-                          endIndent: SizeConfig.safeBlockHorizontal! * 10,
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

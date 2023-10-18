@@ -125,20 +125,20 @@ class About extends StatelessWidget {
                           children: [
                             const Flexible(
                               child: IconCard(
-                                title: 'UŠTEDA',
-                                icon: FontAwesomeIcons.recycle,
+                                title: 'MISIJA',
+                                icon: FontAwesomeIcons.bullseye,
                                 text:
-                                    'Mi smo najbolji saveznik u smanjenju Vaših troškova.\n\nULTRA uređaj za štednju električne energije pravi uštedu bez obaranja napona. Prosječni procenat uštede kod pretežno induktivnih potrošača (motori, kompresori, ventilatori, klima komore itd) je 11 %. Omjer uloženog novca i povrata investicije je izuzetno dobar. Povrat investicije (ROI) je u prosjeku 17 mjeseci.',
+                                    'Proizvodnjom iz obnovljivih izvora čuvamo prirodu i štitimo okolinu.\n\nMi ćemo biti Vaš najbolji saveznik u smanjenju Vaših troškova.\n\nUgradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
                               ),
                             ),
                             SizedBox(
                               width: SizeConfig.safeBlockHorizontal! * 0.75,
                             ),
                             const IconCard(
-                              title: 'ZAŠTITA OKOLINE',
+                              title: 'VIZIJA',
                               icon: FontAwesomeIcons.seedling,
                               text:
-                                  'Proizvodnjom električne energije iz obnovljivih izvora čuvamo prirodu i štitimo čovjekovu okolinu.\n\nUpotrebom uređaja za štednju električne energije reduciramo emisiju CO2, SO2, NOx...Najnovijim svjetskim tehnologijama do veće energetske efikasnosti.',
+                                  'Naš cilj je smanjiti potrošnju električne energije u Bosni i Hercegovini do 5 % i nuditi najbolja rješenja energetske efikasnosti.\n\nU ambijentu liberaliziranog tržišta električne energije biti vodeći u posredovanju prodaje električnom energijom.',
                             ),
                           ],
                         ),

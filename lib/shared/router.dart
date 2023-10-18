@@ -1,12 +1,11 @@
 // router.dart
 import 'package:go_router/go_router.dart';
-import 'package:shpp/screens/about_details.dart';
 import 'package:shpp/screens/home.dart';
 import 'package:shpp/screens/services_details.dart';
 import 'package:shpp/screens/showcase_details.dart';
 
 final GoRouter router = GoRouter(
-  errorBuilder: (context, state) => const ShowcaseDetailsPage(),
+  errorBuilder: (context, state) => const Home(),
   routes: [
     GoRoute(path: '/', builder: (context, state) => const Home(), routes: [
       GoRoute(
