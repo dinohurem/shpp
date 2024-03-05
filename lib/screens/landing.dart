@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/action_button.dart';
+import 'package:shpp/shared/carousel_with_wrap_around.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Landing extends StatefulWidget {
@@ -16,16 +17,30 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
-  // ignore: prefer_final_fields, unused_field
-  late var _isHovering = [false, false, false, false, false];
+  // ignore: prefer_final_fields
 
-  //TODO: Get this image list from firebase.
   final List<String> images = [
-    'assets/images/dhl.png',
+    'assets/images/att.png',
+    'assets/images/promo.jpg',
+    'assets/images/edelstahl.png',
     'assets/images/violeta.png',
     'assets/images/mba.png',
     'assets/images/migg.png',
     'assets/images/madi.png',
+    'assets/images/mdg.png',
+    'assets/images/cet.jpg',
+    'assets/images/kasmir.png',
+    'assets/images/kenda.png',
+    'assets/images/icrni.png',
+    'assets/images/saplast.png',
+    'assets/images/rolling.png',
+    'assets/images/genena.png',
+    'assets/images/intercamp.png',
+    'assets/images/alufinal.png',
+    'assets/images/omc.png',
+    'assets/images/ferplast.png',
+    'assets/images/centrotrans.png',
+    'assets/images/spectron.png',
   ];
 
   @override
@@ -133,47 +148,11 @@ class _LandingState extends State<Landing> {
               SizedBox(
                 height: SizeConfig.safeBlockVertical! * 3.15,
               ),
-              Flexible(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics(),
-                  ),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: images.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        right: SizeConfig.safeBlockHorizontal! * 5,
-                      ),
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        onEnter: (event) {
-                          setState(() {
-                            _isHovering[index] = true;
-                          });
-                        },
-                        onExit: (event) {
-                          setState(() {
-                            _isHovering[index] = false;
-                          });
-                        },
-                        child: Opacity(
-                          opacity: _isHovering[index] ? 1 : 0.3,
-                          child: Container(
-                            height: SizeConfig.safeBlockVertical! * 4,
-                            width: SizeConfig.safeBlockHorizontal! * 5,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(images[index]),
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
+              SizedBox(
+                width: SizeConfig.safeBlockHorizontal! * 50,
+                height: SizeConfig.safeBlockVertical! * 10,
+                child: CarouselWithWrapAround(
+                  images: images,
                 ),
               )
             ],
