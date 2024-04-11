@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,9 +8,8 @@ import 'package:shpp/shared/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Contact extends StatefulWidget {
-  final GlobalKey globalKey;
-  const Contact({
-    super.key,
+  GlobalKey globalKey;
+  Contact({
     required this.globalKey,
   });
 
@@ -368,7 +369,6 @@ class _ContactState extends State<Contact> {
                                   //email app is not opened
                                 }
                               }
-                              
                             },
                           )
                         ],

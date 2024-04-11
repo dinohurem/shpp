@@ -8,8 +8,8 @@ import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Showcase extends StatefulWidget {
-  final GlobalKey globalKey;
-  const Showcase({
+  GlobalKey globalKey;
+  Showcase({
     super.key,
     required this.globalKey,
   });
@@ -50,6 +50,17 @@ class _ShowcaseState extends State<Showcase> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                'PROJEKTI'.toUpperCase(),
+                style: GoogleFonts.mulish(
+                  fontSize: SizeConfig.safeBlockVertical! * 1.5,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).primaryColorDark,
+                ),
+              ),
+              SizedBox(
+                height: SizeConfig.safeBlockVertical! * 3,
+              ),
               SizedBox(
                 height: SizeConfig.safeBlockVertical! * 70,
                 child: Row(
@@ -126,17 +137,6 @@ class _ShowcaseState extends State<Showcase> {
                           FontAwesomeIcons.arrowRight,
                         )),
                   ],
-                ),
-              ),
-              SizedBox(
-                height: SizeConfig.safeBlockVertical! * 3,
-              ),
-              Text(
-                'PROJEKTI'.toUpperCase(),
-                style: GoogleFonts.mulish(
-                  fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                  fontWeight: FontWeight.w700,
-                  color: Theme.of(context).primaryColorDark,
                 ),
               ),
               SizedBox(

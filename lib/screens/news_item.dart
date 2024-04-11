@@ -47,9 +47,13 @@ class NewsItem extends StatelessWidget {
                   ),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                      url,
-                    ),
+                    image: url.contains('http')
+                        ? NetworkImage(
+                            url,
+                          )
+                        : AssetImage(
+                            url,
+                          ) as ImageProvider<Object>,
                   )),
               width: SizeConfig.safeBlockHorizontal! * 28,
             ),

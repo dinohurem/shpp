@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/carousel_with_wrap_around.dart';
+import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Landing extends StatefulWidget {
-  final GlobalKey globalKey;
+  final GlobalKey aboutKey;
   const Landing({
-    super.key,
-    required this.globalKey,
+    required Key globalKey,
+    required this.aboutKey,
   });
 
   @override
@@ -43,11 +44,25 @@ class _LandingState extends State<Landing> {
     'assets/images/spectron.png',
   ];
 
+  void _scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Future.delayed(Duration.zero, () {
+        Scrollable.ensureVisible(
+          key.currentContext!,
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOutCubic,
+          alignment: .5,
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Center(
-      key: widget.globalKey,
+      key: widget.key,
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: SizeConfig.safeBlockVertical! * 2,
@@ -69,7 +84,8 @@ class _LandingState extends State<Landing> {
                           height: SizeConfig.safeBlockVertical! * 5,
                         ),
                         Text(
-                          'Putem obnovljive energije\nka održivoj budućnosti.',
+                          AppLocalizations.of(context)!
+                              .putem_obnovljive_energije_ka_odrzivoj_buducnosti,
                           style: GoogleFonts.mulish(
                             fontSize: SizeConfig.safeBlockVertical! * 4,
                             fontWeight: FontWeight.w800,
@@ -80,7 +96,8 @@ class _LandingState extends State<Landing> {
                           height: SizeConfig.safeBlockVertical! * 3,
                         ),
                         Text(
-                          'Saznajte više o obnovljivim izvorima energije sa SHPP-om.',
+                          AppLocalizations.of(context)!
+                              .saznajte_vise_o_obnovljivim_izvorima_energije_sa_shppom,
                           style: GoogleFonts.mulish(
                             fontSize: SizeConfig.safeBlockVertical! * 1.75,
                             fontWeight: FontWeight.w400,
@@ -91,9 +108,10 @@ class _LandingState extends State<Landing> {
                           height: SizeConfig.safeBlockVertical! * 4,
                         ),
                         ActionButton(
-                          text: 'Saznaj više',
+                          text: AppLocalizations.of(context)!.saznaj_vise,
                           onTap: () {
-                            GoRouter.of(context).go('/about');
+                            _scrollToSection(widget.aboutKey);
+                            router.go('/about');
                           },
                         ),
                       ],
@@ -109,8 +127,8 @@ class _LandingState extends State<Landing> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 3,
+                                spreadRadius: 1.5,
+                                blurRadius: 2,
                               ),
                             ],
                             borderRadius: BorderRadius.only(
@@ -138,7 +156,8 @@ class _LandingState extends State<Landing> {
                 height: SizeConfig.safeBlockVertical! * 3,
               ),
               Text(
-                'Klijenti koji su nam ukazali povjerenje',
+                AppLocalizations.of(context)!
+                    .klijenti_koji_su_nam_ukazali_povjerenje,
                 style: GoogleFonts.mulish(
                   fontSize: SizeConfig.safeBlockVertical! * 2,
                   fontWeight: FontWeight.w800,

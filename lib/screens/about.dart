@@ -1,14 +1,15 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shpp/shared/icon_card.dart';
+import 'package:shpp/shared/icon_card_about.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class About extends StatelessWidget {
-  final GlobalKey globalKey;
-  const About({
-    super.key,
+  GlobalKey globalKey;
+  About({
     required this.globalKey,
   });
 
@@ -124,7 +125,7 @@ class About extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Flexible(
-                              child: IconCard(
+                              child: IconCardAbout(
                                 title: 'MISIJA',
                                 icon: FontAwesomeIcons.bullseye,
                                 text:
@@ -134,7 +135,7 @@ class About extends StatelessWidget {
                             SizedBox(
                               width: SizeConfig.safeBlockHorizontal! * 0.75,
                             ),
-                            const IconCard(
+                            const IconCardAbout(
                               title: 'VIZIJA',
                               icon: FontAwesomeIcons.seedling,
                               text:

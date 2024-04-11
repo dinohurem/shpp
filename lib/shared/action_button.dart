@@ -12,11 +12,22 @@ class ActionButton extends StatefulWidget {
 }
 
 class ActionButtonState extends State<ActionButton> {
+  double _topLeft = SizeConfig.safeBlockHorizontal! * 4;
+  final double _topRight = SizeConfig.safeBlockHorizontal! * 4;
+  final double _bottomLeft = SizeConfig.safeBlockHorizontal! * 4;
+  double _bottomRight = SizeConfig.safeBlockHorizontal! * 2;
   bool _isHovering = false;
 
   void _onHover(bool isHovering) {
     setState(() {
       _isHovering = isHovering;
+
+      _topLeft = isHovering
+          ? SizeConfig.safeBlockHorizontal! * 2
+          : SizeConfig.safeBlockHorizontal! * 4;
+      _bottomRight = isHovering
+          ? SizeConfig.safeBlockHorizontal! * 4
+          : SizeConfig.safeBlockHorizontal! * 2;
     });
   }
 
@@ -27,26 +38,28 @@ class ActionButtonState extends State<ActionButton> {
       onTap: widget.onTap,
       onHover: _onHover,
       child: Material(
-        elevation: _isHovering ? 10 : 2,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(SizeConfig.safeBlockHorizontal! * 4),
-          topRight: Radius.circular(SizeConfig.safeBlockHorizontal! * 4),
-          bottomLeft: Radius.circular(SizeConfig.safeBlockHorizontal! * 4),
-          bottomRight: Radius.circular(SizeConfig.safeBlockHorizontal! * 2),
+          topLeft: Radius.circular(_topLeft),
+          topRight: Radius.circular(_topRight),
+          bottomLeft: Radius.circular(_bottomLeft),
+          bottomRight: Radius.circular(_bottomRight),
         ),
+        elevation: _isHovering ? 2 : 0,
         color: _isHovering
-            ? Theme.of(context).primaryColorDark.withOpacity(0.8)
+            ? Theme.of(context).primaryColorDark.withBlue(100)
             : Theme.of(context).primaryColorDark,
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(seconds: 2),
+          curve: Curves.fastOutSlowIn,
           padding: EdgeInsets.symmetric(
               vertical: SizeConfig.safeBlockVertical! * 2,
               horizontal: SizeConfig.safeBlockHorizontal! * 3),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(SizeConfig.safeBlockHorizontal! * 4),
-              topRight: Radius.circular(SizeConfig.safeBlockHorizontal! * 4),
-              bottomLeft: Radius.circular(SizeConfig.safeBlockHorizontal! * 4),
-              bottomRight: Radius.circular(SizeConfig.safeBlockHorizontal! * 2),
+              topLeft: Radius.circular(_topLeft),
+              topRight: Radius.circular(_topRight),
+              bottomLeft: Radius.circular(_bottomLeft),
+              bottomRight: Radius.circular(_bottomRight),
             ),
           ),
           child: Text(

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/size_config.dart';
 
-class IconCard extends StatelessWidget {
+class IconCardAbout extends StatelessWidget {
   final String title;
   final String text;
   final IconData icon;
   final bool narrowText;
-  const IconCard({
+  const IconCardAbout({
     super.key,
     required this.title,
     required this.icon,
@@ -47,7 +47,7 @@ class IconCard extends StatelessWidget {
               : SizeConfig.safeBlockHorizontal! * 20,
           child: Text(
             text,
-            maxLines: 4,
+            maxLines: 8,
             overflow: TextOverflow.visible,
             style: GoogleFonts.mulish(
               fontSize: SizeConfig.safeBlockVertical! * 1.25,

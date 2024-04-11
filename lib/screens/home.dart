@@ -14,6 +14,13 @@ import 'package:shpp/shared/navbar_shell.dart';
 import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 
+GlobalKey _homeKey = GlobalKey();
+GlobalKey _aboutKey = GlobalKey();
+GlobalKey _servicesKey = GlobalKey();
+GlobalKey _showcaseKey = GlobalKey();
+GlobalKey _newsKey = GlobalKey();
+GlobalKey _contactKey = GlobalKey();
+
 class Home extends StatefulWidget {
   const Home({
     super.key,
@@ -25,12 +32,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool showShadow = false;
-  final GlobalKey _homeKey = GlobalKey();
-  final GlobalKey _aboutKey = GlobalKey();
-  final GlobalKey _servicesKey = GlobalKey();
-  final GlobalKey _showcaseKey = GlobalKey();
-  final GlobalKey _newsKey = GlobalKey();
-  final GlobalKey _contactKey = GlobalKey();
 
   final ScrollController _scrollController = ScrollController();
 
@@ -179,7 +180,7 @@ class _HomeState extends State<Home> {
                       controller: _scrollController,
                       child: Column(
                         children: [
-                          Landing(globalKey: _homeKey),
+                          Landing(globalKey: _homeKey, aboutKey: _aboutKey),
                           const CustomDivider(),
                           About(globalKey: _aboutKey),
                           const CustomDivider(),
@@ -235,7 +236,10 @@ class _HomeState extends State<Home> {
                       controller: _scrollController,
                       child: Column(
                         children: [
-                          Landing(globalKey: _homeKey),
+                          Landing(
+                            globalKey: _homeKey,
+                            aboutKey: _aboutKey,
+                          ),
                           const CustomDivider(),
                           About(globalKey: _aboutKey),
                           const CustomDivider(),
@@ -292,7 +296,10 @@ class _HomeState extends State<Home> {
                       controller: _scrollController,
                       child: Column(
                         children: [
-                          Landing(globalKey: _homeKey),
+                          Landing(
+                            globalKey: _homeKey,
+                            aboutKey: _aboutKey,
+                          ),
                           const CustomDivider(),
                           About(globalKey: _aboutKey),
                           const CustomDivider(),

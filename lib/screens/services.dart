@@ -7,8 +7,8 @@ import 'package:shpp/shared/icon_card.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Services extends StatelessWidget {
-  final GlobalKey globalKey;
-  const Services({
+  GlobalKey globalKey;
+  Services({
     super.key,
     required this.globalKey,
   });
@@ -123,15 +123,15 @@ class Services extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: SizeConfig.safeBlockVertical! * 10,
-              ),
-              ActionButton(
-                text: 'Više informacija',
-                onTap: () {
-                  GoRouter.of(context).go('/about');
-                },
-              ),
+              // SizedBox(
+              //   height: SizeConfig.safeBlockVertical! * 10,
+              // ),
+              // ActionButton(
+              //   text: 'Više informacija',
+              //   onTap: () {
+              //     GoRouter.of(context).go('/services-details');
+              //   },
+              // ),
             ],
           ),
         ),
