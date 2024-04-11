@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:scroll_to_id/scroll_to_id.dart';
 import 'package:shpp/responsive.dart';
 import 'package:shpp/screens/about.dart';
 import 'package:shpp/screens/about_details.dart';
@@ -26,7 +25,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool showShadow = false;
   final ScrollController _scrollController = ScrollController();
-  late ScrollToId scrollToId;
   final GlobalKey _homeKey = GlobalKey();
   final GlobalKey _aboutKey = GlobalKey();
   final GlobalKey _servicesKey = GlobalKey();
@@ -113,19 +111,15 @@ class _HomeState extends State<Home> {
     return showShadow;
   }
 
-  void _scrollListener() {
-    print(scrollToId.idPosition());
-  }
-
   @override
   void dispose() {
     router.routerDelegate.removeListener(_onRouteChanged);
-    // _homeKey.currentState!.dispose();
-    // _aboutKey.currentState!.dispose();
-    // _servicesKey.currentState!.dispose();
-    // _showcaseKey.currentState!.dispose();
-    // _newsKey.currentState!.dispose();
-    // _contactKey.currentState!.dispose();
+    _homeKey.currentState!.dispose();
+    _aboutKey.currentState!.dispose();
+    _servicesKey.currentState!.dispose();
+    _showcaseKey.currentState!.dispose();
+    _newsKey.currentState!.dispose();
+    _contactKey.currentState!.dispose();
     super.dispose();
   }
 
@@ -140,10 +134,6 @@ class _HomeState extends State<Home> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       router.routerDelegate.addListener(_onRouteChanged);
     });
-
-    /// Create ScrollToId instance
-    scrollToId = ScrollToId(scrollController: _scrollController);
-    _scrollController.addListener(_scrollListener);
   }
 
   @override
