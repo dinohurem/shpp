@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutDetails extends StatefulWidget {
   const AboutDetails({
@@ -84,7 +85,9 @@ class _AboutDetailsState extends State<AboutDetails>
                           width: SizeConfig.safeBlockHorizontal! * 1.5,
                         ),
                         AutoSizeText(
-                          'instalirana snaga (kWp)'.toUpperCase(),
+                          AppLocalizations.of(context)!
+                              .instalirana_snaga
+                              .toUpperCase(),
                           presetFontSizes: [
                             SizeConfig.safeBlockVertical! * 1.75,
                             SizeConfig.safeBlockVertical! * 1.25,
@@ -138,7 +141,9 @@ class _AboutDetailsState extends State<AboutDetails>
                           width: SizeConfig.safeBlockHorizontal! * 1.5,
                         ),
                         AutoSizeText(
-                          'ZavrŠenih projekata'.toUpperCase(),
+                          AppLocalizations.of(context)!
+                              .zavrsenih_projekata
+                              .toUpperCase(),
                           presetFontSizes: [
                             SizeConfig.safeBlockVertical! * 1.75,
                             SizeConfig.safeBlockVertical! * 1.25,
@@ -192,7 +197,9 @@ class _AboutDetailsState extends State<AboutDetails>
                           width: SizeConfig.safeBlockHorizontal! * 1.5,
                         ),
                         AutoSizeText(
-                          'godina osnivanja'.toUpperCase(),
+                          AppLocalizations.of(context)!
+                              .godina_osnivanja
+                              .toUpperCase(),
                           presetFontSizes: [
                             SizeConfig.safeBlockVertical! * 1.75,
                             SizeConfig.safeBlockVertical! * 1.25,

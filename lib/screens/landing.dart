@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Landing extends StatefulWidget {
   final GlobalKey aboutKey;
   const Landing({
+    super.key,
     required Key globalKey,
     required this.aboutKey,
   });
@@ -111,7 +112,7 @@ class _LandingState extends State<Landing> {
                           text: AppLocalizations.of(context)!.saznaj_vise,
                           onTap: () {
                             _scrollToSection(widget.aboutKey);
-                            router.go('/about');
+                            router.goNamed(AppRouteNames.about.name);
                           },
                         ),
                       ],

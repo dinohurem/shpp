@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
               primaryColorLight: const Color.fromARGB(255, 229, 236, 253),
               primaryColorDark: const Color(0xFF2e3b4c),
             ),
-            routerConfig: goRouter,
+            routerConfig: router,
           );
         },
       ),

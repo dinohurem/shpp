@@ -1,11 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:shpp/shared/action_button.dart';
+import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Showcase extends StatefulWidget {
   GlobalKey globalKey;
@@ -51,7 +51,7 @@ class _ShowcaseState extends State<Showcase> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'PROJEKTI'.toUpperCase(),
+                AppLocalizations.of(context)!.projekti.toUpperCase(),
                 style: GoogleFonts.mulish(
                   fontSize: SizeConfig.safeBlockVertical! * 1.5,
                   fontWeight: FontWeight.w700,
@@ -129,8 +129,8 @@ class _ShowcaseState extends State<Showcase> {
                         onTap: () {
                           _scrollController.animateTo(
                               _scrollController.offset +
-                                  SizeConfig.safeBlockHorizontal! * 50,
-                              duration: const Duration(seconds: 1),
+                                  SizeConfig.safeBlockHorizontal! * 60,
+                              duration: const Duration(seconds: 2),
                               curve: Curves.easeInOutCubic);
                         },
                         child: const Icon(
@@ -142,55 +142,10 @@ class _ShowcaseState extends State<Showcase> {
               SizedBox(
                 height: SizeConfig.safeBlockVertical! * 3,
               ),
-              SizedBox(
-                height: SizeConfig.safeBlockVertical! * 10,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: AutoSizeText(
-                        'Očuvanje prirode i zaštita okoline su\naktivnosti koje nemaju alternativu',
-                        presetFontSizes: [
-                          SizeConfig.safeBlockVertical! * 3,
-                          SizeConfig.safeBlockVertical! * 1.5,
-                          SizeConfig.safeBlockVertical! * 1.25,
-                          SizeConfig.safeBlockVertical! * 0.75,
-                        ],
-                        overflowReplacement: const SizedBox(),
-                        maxLines: 4,
-                        style: GoogleFonts.mulish(
-                          fontWeight: FontWeight.w800,
-                          color: Theme.of(context).primaryColorDark,
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: AutoSizeText(
-                        'Proizvodnjom iz obnovljivih izvora čuvamo prirodu i štitimo okolinu. Mi ćemo biti Vaš najbolji saveznik u smanjenju Vaših troškova.\nUgradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
-                        presetFontSizes: [
-                          SizeConfig.safeBlockVertical! * 1.5,
-                          SizeConfig.safeBlockVertical! * 1.25,
-                          SizeConfig.safeBlockVertical! * 0.75,
-                          SizeConfig.safeBlockVertical! * 0.5,
-                        ],
-                        overflowReplacement: const SizedBox(),
-                        maxLines: 5,
-                        style: GoogleFonts.mulish(
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).primaryColorDark,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: SizeConfig.safeBlockVertical! * 3,
-              ),
               ActionButton(
-                text: 'Svi naši projekti',
+                text: AppLocalizations.of(context)!.svi_nasi_projekti,
                 onTap: () {
-                  GoRouter.of(context).go('/about');
+                  router.goNamed(AppRouteNames.projectDetails.name);
                 },
               ),
             ],

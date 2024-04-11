@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/icon_card_about.dart';
 import 'package:shpp/shared/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class About extends StatelessWidget {
   GlobalKey globalKey;
@@ -69,7 +70,7 @@ class About extends StatelessWidget {
                       height: SizeConfig.safeBlockVertical! * 5,
                     ),
                     Text(
-                      'o nama'.toUpperCase(),
+                      AppLocalizations.of(context)!.onama.toUpperCase(),
                       style: GoogleFonts.mulish(
                         fontSize: SizeConfig.safeBlockVertical! * 1.5,
                         fontWeight: FontWeight.w700,
@@ -80,7 +81,8 @@ class About extends StatelessWidget {
                       height: SizeConfig.safeBlockVertical! * 3,
                     ),
                     AutoSizeText(
-                      'Proizvodimo električnu energiju\niz obnovljivih izvora',
+                      AppLocalizations.of(context)!
+                          .proizvodimo_elektricnu_energiju_iz_obnovljivih_izvora,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.mulish(
@@ -93,7 +95,7 @@ class About extends StatelessWidget {
                       height: SizeConfig.safeBlockVertical! * 3,
                     ),
                     AutoSizeText(
-                      'SHPP d.o.o. Sarajevo je nastao kao potreba za zaštitom čovjekove okoline i potenciranja ulaganja u obnovljive izvore električne energije, bilo da se radi o malim hidroelektranama, fotovoltaik postrojenjima, elektranama na vjetar, kogeneraciji ili postrojenjima na biogas.',
+                      AppLocalizations.of(context)!.onama_tekst,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.mulish(
                         fontSize: SizeConfig.safeBlockVertical! * 1.5,
@@ -106,7 +108,7 @@ class About extends StatelessWidget {
                       height: SizeConfig.safeBlockVertical! * 3,
                     ),
                     Text(
-                      'Energetska efikasnost je dio našeg portfolia i instaliranjem i upotrebom najsavremenijih svjetskih uređaja za štednju električne energije, štedite energiju i smanjujete Vaše troškove.\nMi ćemo biti Vaš sagovornik, Vaš savjetnik i Vaš partner.',
+                      AppLocalizations.of(context)!.onama_tekst2,
                       style: GoogleFonts.mulish(
                         fontSize: SizeConfig.safeBlockVertical! * 1.5,
                         fontWeight: FontWeight.w500,
@@ -124,23 +126,26 @@ class About extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Flexible(
+                            Flexible(
                               child: IconCardAbout(
-                                title: 'MISIJA',
+                                title: AppLocalizations.of(context)!
+                                    .misija
+                                    .toUpperCase(),
                                 icon: FontAwesomeIcons.bullseye,
                                 text:
-                                    'Proizvodnjom iz obnovljivih izvora čuvamo prirodu i štitimo okolinu.\n\nMi ćemo biti Vaš najbolji saveznik u smanjenju Vaših troškova.\n\nUgradnjom najnovijih svjetskih tehnologija do bolje energetske efikasnosti.',
+                                    AppLocalizations.of(context)!.misija_tekst,
                               ),
                             ),
                             SizedBox(
                               width: SizeConfig.safeBlockHorizontal! * 0.75,
                             ),
-                            const IconCardAbout(
-                              title: 'VIZIJA',
-                              icon: FontAwesomeIcons.seedling,
-                              text:
-                                  'Naš cilj je smanjiti potrošnju električne energije u Bosni i Hercegovini do 5 % i nuditi najbolja rješenja energetske efikasnosti.\n\nU ambijentu liberaliziranog tržišta električne energije biti vodeći u posredovanju prodaje električnom energijom.',
-                            ),
+                            IconCardAbout(
+                                title: AppLocalizations.of(context)!
+                                    .vizija
+                                    .toUpperCase(),
+                                icon: FontAwesomeIcons.seedling,
+                                text:
+                                    AppLocalizations.of(context)!.vizija_tekst),
                           ],
                         ),
                       ],

@@ -72,17 +72,17 @@ class Navbar extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: SizeConfig.safeBlockHorizontal! * 2,
-          ),
-          Flexible(
-            child: GestureDetector(
-              onTap: () => onOptionSelected(4),
-              child: NavbarOption(
-                text: AppLocalizations.of(context)!.novosti,
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   width: SizeConfig.safeBlockHorizontal! * 2,
+          // ),
+          // Flexible(
+          //   child: GestureDetector(
+          //     onTap: () => onOptionSelected(4),
+          //     child: NavbarOption(
+          //       text: AppLocalizations.of(context)!.novosti,
+          //     ),
+          //   ),
+          // ),
           SizedBox(
             width: SizeConfig.safeBlockHorizontal! * 2,
           ),

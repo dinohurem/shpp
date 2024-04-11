@@ -1,17 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/icon_card.dart';
 import 'package:shpp/shared/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Services extends StatelessWidget {
+class Services extends StatefulWidget {
   GlobalKey globalKey;
   Services({
     super.key,
     required this.globalKey,
   });
+
+  @override
+  State<Services> createState() => _ServicesState();
+}
+
+class _ServicesState extends State<Services> {
+  late List<String> _titles;
+  late List<String> _texts;
+
+  final _icons = [
+    FontAwesomeIcons.solidSun,
+    FontAwesomeIcons.chargingStation,
+    FontAwesomeIcons.solarPanel,
+    FontAwesomeIcons.batteryFull,
+    FontAwesomeIcons.plugCircleCheck,
+    FontAwesomeIcons.handshake,
+  ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _titles = [
+      AppLocalizations.of(context)!.usluge_naslov1,
+      AppLocalizations.of(context)!.usluge_naslov2,
+      AppLocalizations.of(context)!.usluge_naslov3,
+      AppLocalizations.of(context)!.usluge_naslov4,
+      AppLocalizations.of(context)!.usluge_naslov5,
+      AppLocalizations.of(context)!.usluge_naslov6,
+    ];
+
+    _texts = [
+      AppLocalizations.of(context)!.usluge_tekst1,
+      AppLocalizations.of(context)!.usluge_tekst2,
+      AppLocalizations.of(context)!.usluge_tekst3,
+      AppLocalizations.of(context)!.usluge_tekst4,
+      AppLocalizations.of(context)!.usluge_tekst5,
+      AppLocalizations.of(context)!.usluge_tekst6,
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +59,14 @@ class Services extends StatelessWidget {
         vertical: SizeConfig.safeBlockVertical! * 10,
       ),
       child: SizedBox(
-        key: globalKey,
+        key: widget.globalKey,
         width: SizeConfig.safeBlockHorizontal! * 70,
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'USLUGE'.toUpperCase(),
+                AppLocalizations.of(context)!.usluge.toUpperCase(),
                 style: GoogleFonts.mulish(
                   fontSize: SizeConfig.safeBlockVertical! * 1.5,
                   fontWeight: FontWeight.w700,
@@ -38,100 +76,24 @@ class Services extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical! * 3,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    child: SizedBox(
-                      width: SizeConfig.safeBlockHorizontal! * 20,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const IconCard(
-                            narrowText: false,
-                            title:
-                                'PROIZVODNJA ELEKTRIČNE ENERGIJE IZ OBNOVLJIVIH IZVORA',
-                            icon: FontAwesomeIcons.solidSun,
-                            text:
-                                'Proizvodnja električne energije bazirana isključivo na obnovljivim izvorima električne energije, prije svega na obnovljivom potencijalu Bosne i Hercegovine.',
-                          ),
-                          SizedBox(
-                            height: SizeConfig.safeBlockVertical! * 10,
-                          ),
-                          const IconCard(
-                            narrowText: false,
-                            title:
-                                'PROJEKTOVANJE I UGRADNJA PUNIONICA ZA ELEKTROMOBILE',
-                            icon: FontAwesomeIcons.chargingStation,
-                            text:
-                                'Proizvodnja električne energije bazirana isključivo na obnovljivim izvorima električne energije, prije svega na obnovljivom potencijalu Bosne i Hercegovine.',
-                          ),
-                        ],
-                      ),
+              SizedBox(
+                height: SizeConfig.safeBlockVertical! * 70,
+                width: SizeConfig.safeBlockHorizontal! * 70,
+                child: GridView(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: SizeConfig.safeBlockHorizontal!,
+                      mainAxisExtent: SizeConfig.safeBlockVertical! * 40,
                     ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const IconCard(
-                          narrowText: false,
-                          title:
-                              'PROJEKTOVANJE, INŽENJERING I CONSULTING U OBLASTI FOTONAPONSKIH-SOLARNIH ELEKTRANA',
-                          icon: FontAwesomeIcons.solarPanel,
-                          text:
-                              'Proizvodnja električne energije bazirana isključivo na obnovljivim izvorima električne energije, prije svega na obnovljivom potencijalu Bosne i Hercegovine.',
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical! * 10,
-                        ),
-                        const IconCard(
-                          narrowText: false,
-                          title: 'KOMPENZACIJA REAKTIVNE ENERGIJE',
-                          icon: FontAwesomeIcons.batteryFull,
-                          text:
-                              'U saradnji sa našim partnerima nudimo Vam usluge kompenzacije reaktivne energije po sistemu "ključ u ruke". Investicija u kompenzaciju reaktivne energije je ulaganje koje ima najkraći povrat investicije.',
-                        ),
-                      ],
-                    ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const IconCard(
-                          narrowText: false,
-                          title:
-                              'PROJEKTOVANJE I UGRADNJA OPREME ZA USTEDU ELEKTRIČNE ENERGIJE',
-                          icon: FontAwesomeIcons.plugCircleCheck,
-                          text:
-                              'SHPP d.o.o. je partner u posredovanju u prodaji i snabdijevanju električnom energijom kompaniji Proenergy d.o.o.',
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical! * 10,
-                        ),
-                        const IconCard(
-                          narrowText: false,
-                          title: 'POSREDOVANJE U PRODAJI ELEKTRIČNE ENERGIJE',
-                          icon: FontAwesomeIcons.handshake,
-                          text:
-                              'SHPP d.o.o. je partner u posredovanju u prodaji i snabdijevanju električnom energijom kompaniji Proenergy d.o.o.\n\nProenergy d.o.o. je lider po broju kupaca u Bosni i Hercegovini, nakon tri elektroprivrede sa većinskim državnim kapitalom.',
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: List.generate(6, (index) {
+                      return IconCard(
+                        title: _titles[index],
+                        text: _texts[index],
+                        icon: _icons[index],
+                      );
+                    })),
               ),
-              // SizedBox(
-              //   height: SizeConfig.safeBlockVertical! * 10,
-              // ),
-              // ActionButton(
-              //   text: 'Više informacija',
-              //   onTap: () {
-              //     GoRouter.of(context).go('/services-details');
-              //   },
-              // ),
             ],
           ),
         ),

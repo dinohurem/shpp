@@ -60,7 +60,7 @@ class _AdminState extends State<Admin> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           ProjectList(), // Widget to handle projects
           ServiceList(), // Widget to handle services
         ],

@@ -31,7 +31,6 @@ class IconCard extends StatelessWidget {
         ),
         Text(
           title,
-          maxLines: 2,
           style: GoogleFonts.mulish(
             fontSize: SizeConfig.safeBlockVertical! * 1.75,
             fontWeight: FontWeight.w900,
@@ -47,7 +46,6 @@ class IconCard extends StatelessWidget {
               : SizeConfig.safeBlockHorizontal! * 20,
           child: Text(
             text,
-            maxLines: 4,
             overflow: TextOverflow.visible,
             style: GoogleFonts.mulish(
               fontSize: SizeConfig.safeBlockVertical! * 1.25,

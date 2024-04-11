@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Contact extends StatefulWidget {
   GlobalKey globalKey;
@@ -42,7 +43,7 @@ class _ContactState extends State<Contact> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Kontaktirajte nas'.toUpperCase(),
+              AppLocalizations.of(context)!.kontaktirajte_nas.toUpperCase(),
               style: GoogleFonts.mulish(
                 fontSize: SizeConfig.safeBlockVertical! * 1.5,
                 fontWeight: FontWeight.w700,
@@ -57,7 +58,8 @@ class _ContactState extends State<Contact> {
                     height: SizeConfig.safeBlockVertical! * 3,
                   ),
                   Text(
-                    'Spremni smo odgovoriti na sve Vaše upite',
+                    AppLocalizations.of(context)!
+                        .spremni_smo_odgovoriti_na_sve_vase_upite,
                     style: GoogleFonts.mulish(
                       fontSize: SizeConfig.safeBlockVertical! * 3,
                       fontWeight: FontWeight.w800,
@@ -274,7 +276,8 @@ class _ContactState extends State<Contact> {
                               if (value!.isEmpty ||
                                   !RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                       .hasMatch(value)) {
-                                return 'Molimo unesite validnu email adresu.';
+                                return AppLocalizations.of(context)!
+                                    .validna_adresa;
                               } else {
                                 return null;
                               }
@@ -308,7 +311,7 @@ class _ContactState extends State<Contact> {
                             height: SizeConfig.safeBlockVertical! * 3,
                           ),
                           Text(
-                            'Poruka',
+                            AppLocalizations.of(context)!.poruka,
                             style: GoogleFonts.mulish(
                               fontSize: SizeConfig.safeBlockVertical! * 1.5,
                               fontWeight: FontWeight.w500,
@@ -323,7 +326,8 @@ class _ContactState extends State<Contact> {
                                 5, //Normal textInputField will be displayed
                             maxLines: 8,
                             decoration: InputDecoration(
-                              hintText: 'Unesite poruku...',
+                              hintText:
+                                  AppLocalizations.of(context)!.unesite_poruku,
                               hintStyle: const TextStyle(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.w500,
@@ -351,14 +355,15 @@ class _ContactState extends State<Contact> {
                             height: SizeConfig.safeBlockVertical! * 3,
                           ),
                           ActionButton(
-                            text: 'Pošalji poruku',
+                            text: AppLocalizations.of(context)!.posalji_poruku,
                             onTap: () async {
                               if (_formKey.currentState!.validate()) {
                                 final Uri emailLaunchUri = Uri(
                                   scheme: 'mailto',
                                   path: 'shpp@shpp.ba',
                                   query: encodeQueryParameters(<String, String>{
-                                    'subject': 'Zdravo SHPP - kontakt',
+                                    'subject':
+                                        AppLocalizations.of(context)!.zdravo,
                                     'body': text,
                                   }),
                                 );

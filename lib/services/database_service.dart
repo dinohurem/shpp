@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shpp/models/project.dart';
 import 'package:shpp/models/service.dart';

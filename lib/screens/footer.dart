@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/navbar_option.dart';
 import 'package:shpp/shared/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Footer extends StatefulWidget {
   final Function(int index) onOptionSelected;
@@ -44,8 +45,8 @@ class _FooterState extends State<Footer> {
               Flexible(
                 child: GestureDetector(
                   onTap: () => widget.onOptionSelected(0),
-                  child: const NavbarOption(
-                    text: 'Početna',
+                  child: NavbarOption(
+                    text: AppLocalizations.of(context)!.pocetna,
                   ),
                 ),
               ),
@@ -55,8 +56,8 @@ class _FooterState extends State<Footer> {
               Flexible(
                 child: GestureDetector(
                   onTap: () => widget.onOptionSelected(1),
-                  child: const NavbarOption(
-                    text: 'O nama',
+                  child: NavbarOption(
+                    text: AppLocalizations.of(context)!.onama,
                   ),
                 ),
               ),
@@ -66,8 +67,8 @@ class _FooterState extends State<Footer> {
               Flexible(
                 child: GestureDetector(
                   onTap: () => widget.onOptionSelected(2),
-                  child: const NavbarOption(
-                    text: 'Usluge',
+                  child: NavbarOption(
+                    text: AppLocalizations.of(context)!.usluge,
                   ),
                 ),
               ),
@@ -77,30 +78,30 @@ class _FooterState extends State<Footer> {
               Flexible(
                 child: GestureDetector(
                   onTap: () => widget.onOptionSelected(3),
-                  child: const NavbarOption(
-                    text: 'Projekti',
+                  child: NavbarOption(
+                    text: AppLocalizations.of(context)!.projekti,
                   ),
                 ),
               ),
-              SizedBox(
-                width: SizeConfig.safeBlockHorizontal! * 2,
-              ),
-              Flexible(
-                child: GestureDetector(
-                  onTap: () => widget.onOptionSelected(4),
-                  child: const NavbarOption(
-                    text: 'Novosti',
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: SizeConfig.safeBlockHorizontal! * 2,
+              // ),
+              // Flexible(
+              //   child: GestureDetector(
+              //     onTap: () => widget.onOptionSelected(4),
+              //     child: const NavbarOption(
+              //       text: 'Novosti',
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 width: SizeConfig.safeBlockHorizontal! * 2,
               ),
               Flexible(
                 child: GestureDetector(
                   onTap: () => widget.onOptionSelected(5),
-                  child: const NavbarOption(
-                    text: 'Kontakt',
+                  child: NavbarOption(
+                    text: AppLocalizations.of(context)!.kontakt,
                   ),
                 ),
               ),
