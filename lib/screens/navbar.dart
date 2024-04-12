@@ -1,6 +1,10 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:shpp/screens/admin/login.dart';
 import 'package:shpp/services/app_language.dart';
 import 'package:shpp/shared/navbar_option.dart';
 import 'package:shpp/shared/size_config.dart';
@@ -112,6 +116,25 @@ class Navbar extends StatelessWidget {
                   width: SizeConfig.safeBlockHorizontal! * 4,
                   borderRadius: SizeConfig.safeBlockVertical!,
                 ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => const Login(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Icon(
+                FontAwesomeIcons.userShield,
+                size: SizeConfig.safeBlockVertical! * 1.25,
+                color: Theme.of(context).primaryColorDark,
               ),
             ),
           ),

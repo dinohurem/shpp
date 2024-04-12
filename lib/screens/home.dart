@@ -10,7 +10,6 @@ import 'package:shpp/screens/services.dart';
 import 'package:shpp/screens/showcase/showcase.dart';
 import 'package:shpp/shared/custom_divider.dart';
 import 'package:shpp/shared/navbar_shell.dart';
-import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Home extends StatefulWidget {
@@ -56,45 +55,22 @@ class _HomeState extends State<Home> {
             duration: const Duration(seconds: 2),
           );
         });
-        router.goNamed(AppRouteNames.home.name);
         break;
       case 1:
         _scrollToSection(_aboutKey);
-        router.goNamed(AppRouteNames.about.name);
         break;
       case 2:
         _scrollToSection(_servicesKey);
-        router.goNamed(AppRouteNames.services.name);
         break;
       case 3:
         _scrollToSection(_showcaseKey);
-        router.goNamed(AppRouteNames.projects.name);
         break;
       case 4:
         _scrollToSection(_newsKey);
-        router.goNamed(AppRouteNames.news.name);
         break;
       case 5:
         _scrollToSection(_contactKey);
-        router.goNamed(AppRouteNames.contact.name);
         break;
-    }
-  }
-
-  void _onRouteChanged() {
-    final location = router.routerDelegate.currentConfiguration.uri.toString();
-    if (location == '/home' || location == '/') {
-      _scrollToSection(_homeKey);
-    } else if (location == '/about') {
-      _scrollToSection(_aboutKey);
-    } else if (location == '/services') {
-      _scrollToSection(_servicesKey);
-    } else if (location == '/projects') {
-      _scrollToSection(_showcaseKey);
-    } else if (location == '/news') {
-      _scrollToSection(_newsKey);
-    } else if (location == '/contact') {
-      _scrollToSection(_contactKey);
     }
   }
 
@@ -113,13 +89,12 @@ class _HomeState extends State<Home> {
 
   @override
   void dispose() {
-    router.routerDelegate.removeListener(_onRouteChanged);
-    _homeKey.currentState!.dispose();
-    _aboutKey.currentState!.dispose();
-    _servicesKey.currentState!.dispose();
-    _showcaseKey.currentState!.dispose();
-    _newsKey.currentState!.dispose();
-    _contactKey.currentState!.dispose();
+    // _homeKey.currentState!.dispose();
+    // _aboutKey.currentState!.dispose();
+    // _servicesKey.currentState!.dispose();
+    // _showcaseKey.currentState!.dispose();
+    // _newsKey.currentState!.dispose();
+    // _contactKey.currentState!.dispose();
     super.dispose();
   }
 
@@ -131,9 +106,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      router.routerDelegate.addListener(_onRouteChanged);
-    });
   }
 
   @override

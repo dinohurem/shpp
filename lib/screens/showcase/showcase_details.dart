@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/responsive.dart';
 import 'package:shpp/screens/navbar.dart';
 import 'package:shpp/screens/showcase/showcase_item.dart';
-import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class ShowcaseDetails extends StatefulWidget {
@@ -49,7 +48,7 @@ class _ShowcaseDetailsState extends State<ShowcaseDetails> {
       case 3:
       case 4:
       case 5:
-        router.pop();
+        Navigator.of(context).pop();
         break;
     }
   }
@@ -79,9 +78,6 @@ class _ShowcaseDetailsState extends State<ShowcaseDetails> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Navbar(
-                onOptionSelected: _onOptionSelected,
-              ),
               Center(
                 child: SizedBox(
                     width: SizeConfig.safeBlockHorizontal! * 70,

@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shpp/screens/admin/login.dart';
 import 'package:shpp/screens/admin/project_list.dart';
 import 'package:shpp/screens/admin/service_list.dart';
+import 'package:shpp/screens/home.dart';
 import 'package:shpp/services/auth_service.dart';
-import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Admin extends StatefulWidget {
@@ -22,7 +23,14 @@ class _AdminState extends State<Admin> with SingleTickerProviderStateMixin {
 
     // If user not logged in, redirect him to login first.
     if (FirebaseAuth.instance.currentUser == null) {
-      router.pushReplacement('/login');
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const Login(),
+          transitionDuration: Duration.zero,
+          reverseTransitionDuration: Duration.zero,
+        ),
+      );
     }
 
     _tabController = TabController(length: 2, vsync: this);
@@ -43,8 +51,18 @@ class _AdminState extends State<Admin> with SingleTickerProviderStateMixin {
               height: SizeConfig.safeBlockVertical! * 4,
               child: ElevatedButton(
                 onPressed: () async {
+                  var navigator = Navigator.of(context);
                   await AuthService().signOut();
-                  router.pushReplacement('/home');
+
+                  if (!mounted) return;
+
+                  navigator.pushReplacement(
+                    PageRouteBuilder(
+                      pageBuilder: (_, __, ___) => const Home(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                    ),
+                  );
                 },
                 child: Text(
                   'Log Out',

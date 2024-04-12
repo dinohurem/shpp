@@ -9,15 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shpp/main.dart';
 import 'package:shpp/services/app_language.dart';
-import 'package:shpp/shared/router.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     AppLanguage language = AppLanguage();
-    final goRouter = router;
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp(
-      goRouter: goRouter,
       language: language,
     ));
 

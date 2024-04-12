@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shpp/screens/admin/admin.dart';
 import 'package:shpp/services/auth_service.dart';
-import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class Login extends StatefulWidget {
@@ -27,7 +27,14 @@ class _LoginState extends State<Login> {
         if (user == null) {
           throw Exception('Invalid credentials.');
         }
-        router.pushReplacement('/admin');
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const Admin(),
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
+          ),
+        );
       } catch (e) {
         print(e);
         showDialog(
@@ -55,8 +62,16 @@ class _LoginState extends State<Login> {
   void initState() {
     super.initState();
     // Check if already logged in.
+    // TODO: Fix this.
     if (FirebaseAuth.instance.currentUser != null) {
-      router.pushReplacement('/admin');
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const Admin(),
+          transitionDuration: Duration.zero,
+          reverseTransitionDuration: Duration.zero,
+        ),
+      );
     }
   }
 

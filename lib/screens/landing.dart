@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/carousel_with_wrap_around.dart';
-import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -81,6 +81,9 @@ class _LandingState extends State<Landing> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Image.asset(
+                          'assets/animations/animation1.gif',
+                        ),
                         SizedBox(
                           height: SizeConfig.safeBlockVertical! * 5,
                         ),
@@ -112,7 +115,6 @@ class _LandingState extends State<Landing> {
                           text: AppLocalizations.of(context)!.saznaj_vise,
                           onTap: () {
                             _scrollToSection(widget.aboutKey);
-                            router.goNamed(AppRouteNames.about.name);
                           },
                         ),
                       ],

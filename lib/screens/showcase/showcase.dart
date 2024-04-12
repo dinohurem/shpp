@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
+import 'package:shpp/screens/showcase/showcase_details.dart';
 import 'package:shpp/shared/action_button.dart';
-import 'package:shpp/shared/router.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -145,7 +145,14 @@ class _ShowcaseState extends State<Showcase> {
               ActionButton(
                 text: AppLocalizations.of(context)!.svi_nasi_projekti,
                 onTap: () {
-                  router.goNamed(AppRouteNames.projectDetails.name);
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (_, __, ___) => const ShowcaseDetails(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                    ),
+                  );
                 },
               ),
             ],

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:shpp/models/service.dart';
 import 'package:shpp/services/database_service.dart';
-import 'package:shpp/shared/router.dart';
 
 class ServiceList extends StatefulWidget {
   const ServiceList({super.key});
@@ -36,9 +35,9 @@ class _ServiceListState extends State<ServiceList> {
                   final project = projects[index];
                   return ListTile(
                     // Implement onTap or trailing buttons for edit and delete functionalities.
-                    onTap: () => router.goNamed(
-                        AppRouteNames.adminServices.name,
-                        queryParameters: {'id': project.uid}),
+                    // onTap: () => Navigator.of(context).pushNamed(
+                    //     '/admin/services/',
+                    //     queryParameters: {'id': project.uid}),
                     title: Text(project.title),
                     subtitle: Text(project.subtitle),
                   );
