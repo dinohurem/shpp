@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/carousel_with_wrap_around.dart';
 import 'package:shpp/shared/size_config.dart';

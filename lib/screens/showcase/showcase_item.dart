@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:shpp/models/project.dart';
+import 'package:shpp/screens/showcase/gallery.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/icon_card_showcase.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShowcaseItem extends StatelessWidget {
-  final String title;
-  final String text;
-  final String url;
+  final Project project;
   const ShowcaseItem({
     super.key,
-    required this.title,
-    required this.text,
-    required this.url,
+    required this.project,
   });
 
   @override
@@ -47,13 +44,16 @@ class ShowcaseItem extends StatelessWidget {
                     ),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: url.contains('http')
-                          ? NetworkImage(
-                              url,
-                            )
-                          : AssetImage(
-                              url,
-                            ) as ImageProvider<Object>,
+                      image: project.urls.isNotEmpty
+                          ? project.urls[0].contains('http')
+                              ? NetworkImage(
+                                  project.urls[0],
+                                )
+                              : AssetImage(
+                                  project.urls[0],
+                                ) as ImageProvider<Object>
+                          : const AssetImage('assets/images/panels.jpg')
+                              as ImageProvider<Object>,
                     )),
                 width: SizeConfig.safeBlockHorizontal! * 35),
           ),
@@ -68,7 +68,7 @@ class ShowcaseItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconCardShowcase(title: title, text: text),
+                IconCardShowcase(title: project.title, text: project.content),
                 Padding(
                   padding: EdgeInsets.only(
                     left: SizeConfig.safeBlockHorizontal! * 1.5,
@@ -76,7 +76,15 @@ class ShowcaseItem extends StatelessWidget {
                   child: ActionButton(
                       text: AppLocalizations.of(context)!.pogledaj_slike,
                       onTap: () {
-                        context.go('/projects-details');
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            pageBuilder: (_, __, ___) => Gallery(
+                              project: project,
+                            ),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
+                          ),
+                        );
                       }),
                 ),
               ],

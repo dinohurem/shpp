@@ -35,9 +35,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    // final FirebaseStorage firebaseStorage = FirebaseStorage.instance;
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AppLanguage>(
@@ -47,19 +44,6 @@ class MyApp extends StatelessWidget {
       child: Consumer<AppLanguage>(
         builder: (context, model, child) {
           return MaterialApp(
-            // initialRoute: '/',
-            // routes: {
-            //   '/': (context) => Home(),
-            //   '/home': (context) => Home(),
-            //   '/about': (context) => Home(),
-            //   '/services': (context) => Home(),
-            //   '/services-details': (context) => ServicesDetailsPage(),
-            //   '/projects': (context) => Home(),
-            //   '/news': (context) => Home(),
-            //   '/contact': (context) => Home(),
-            //   '/login': (context) => Login(),
-            //   '/admin': (context) => Admin(),
-            // },
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {PointerDeviceKind.mouse},
             ),

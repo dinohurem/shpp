@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shpp/responsive.dart';
-import 'package:shpp/screens/navbar.dart';
+import 'package:shpp/screens/home.dart';
 import 'package:shpp/screens/showcase/showcase_item.dart';
+import 'package:shpp/services/database_service.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class ShowcaseDetails extends StatefulWidget {
@@ -14,22 +14,60 @@ class ShowcaseDetails extends StatefulWidget {
 }
 
 class _ShowcaseDetailsState extends State<ShowcaseDetails> {
-  bool showShadow = false;
+  final DatabaseService _db = DatabaseService();
 
   var titles = [
-    'Google predstavlja Solar API',
-    'SHPP - 100 najvećih',
-    '"Solarna energija - Put ka uštedama"',
-    'Budućnost na Sunce Vol. 2:\nInvestiranje u solarne elektrane',
-    'Energija vjetra i solarna energija\nće proizvoditi 33% svjetske energije do 2030',
+    //dhl
+    //travnik
+    'Ferplast d.o.o',
+    'MBA d.o.o.',
+    'OMC d.o.o.',
+    'Jerry d.o.o.',
+    'Promo d.o.o.',
+    'Saplast d.o.o.',
+    'Alufinal d.o.o.',
+    'Eurotrans d.o.o.',
+    'Eurotrans d.o.o.',
+    'Mlin Nezić d.o.o.',
+    'Rolling d.o.o.',
+    'SHPP d.o.o.',
+    'Genena d.o.o.',
+    'Sedžan d.o.o.',
+    'Bošnjak Velika Kladuša d.o.o.',
+    'Crni stovarište d.o.o.',
+    'Crvena Jabuka Cazin d.o.o.',
+    'Kenda d.o.o.',
+    'CetBah d.o.o.',
+    'Tehnika d.o.o.',
+    'Edelstahl d.o.o.',
+    'MDG International d.o.o.',
+    'Mostar Express d.o.o.',
   ];
 
   var texts = [
-    'Kako solarna energija postaje pristupačnija, postoji povećan potencijal i potražnja za donošenjem informacija i tehnologije solarnim kompanijama i programerima širom svijeta. Zato smo danas lansirali naš Solar API, u okviru novog paketa API-ja okruženja sa platforme Google Maps. Solar A',
-    'SHPP d.o.o. je dobila priznanje za jednu od brzorastućih kompanija za 2023. godinu.\n\n Priznanje je uručio Zlatko Mijatović, ministar privrede Kantona Sarajevo.',
-    'UniCredit Bank zajedno s partnerima Deloitte BiH i preduzećem SHPP, započinje s nizom radionica usmjerenih ka informisanju klijenata fizičkih i pravnih lica o potencijalu solarne energije, predostima te izazovima pri prelasku na solarnu energiju, kao i mogućnostima finansiranja projekata od strane banke.',
-    'U centralnom događaju konferencije, panel diskusiji na temu "Investicije u solarne elektrane i zakonski okviri u BiH u 2022. godini" učestvovao je član SHPP d.o.o. tima Amer Jerlagić.',
-    'Eksponencijalni rast sektora znači da se predviđa da će projekti vjetra i solarne energije proizvoditi najmanje 33 posto svjetske električne energije, u odnosu na sadašnjih oko 12 posto. To će dovesti do pada proizvodnje na fosilna goriva i jeftinije energije, pokazao je izvještaj RMI.',
+    'Ferplast d.o.o tekst',
+    'MBA d.o.o. tekst',
+    'OMC d.o.o. tekst',
+    'Jerry d.o.o. tekst',
+    'Promo d.o.o. tekst',
+    'Saplast d.o.o. tekst',
+    'Alufinal d.o.o. tekst',
+    'Eurotrans d.o.o. tekst',
+    'Eurotrans d.o.o. tekst',
+    'Mlin Nezić d.o.o. tekst',
+    'Rolling d.o.o. tekst',
+    'SHPP d.o.o. tekst',
+    'Genena d.o.o. tekst',
+    'Sedžan d.o.o. tekst',
+    'Bošnjak Velika Kladuša d.o.o. tekst',
+    'Crni stovarište d.o.o. tekst',
+    'Crvena Jabuka Cazin d.o.o. tekst',
+    'Kenda d.o.o. tekst',
+    'CetBah d.o.o. tekst',
+    'Tehnika d.o.o. tekst',
+    'Edelstahl d.o.o. tekst',
+    'MDG International d.o.o. tekst',
+    'Mostar Express d.o.o. tekst',
   ];
 
   var links = [
@@ -40,41 +78,28 @@ class _ShowcaseDetailsState extends State<ShowcaseDetails> {
     'assets/images/news5.png',
   ];
 
-  void _onOptionSelected(int index) {
-    switch (index) {
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        Navigator.of(context).pop();
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Responsive(
-        desktop: Container(
-          width: SizeConfig.safeBlockHorizontal! * 100,
-          height: SizeConfig.safeBlockVertical! * 100,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  const Color.fromARGB(255, 253, 252, 236),
-                  Theme.of(context).primaryColorLight,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: const [
-                  0.1,
-                  0.6,
-                ],
-                tileMode: TileMode.clamp),
-          ),
+      body: Container(
+        width: SizeConfig.safeBlockHorizontal! * 100,
+        height: SizeConfig.safeBlockVertical! * 100,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 253, 252, 236),
+                Theme.of(context).primaryColorLight,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: const [
+                0.1,
+                0.6,
+              ],
+              tileMode: TileMode.clamp),
+        ),
+        child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -87,13 +112,41 @@ class _ShowcaseDetailsState extends State<ShowcaseDetails> {
                         SizedBox(
                           height: SizeConfig.safeBlockVertical! * 5,
                         ),
-                        Text(
-                          AppLocalizations.of(context)!.projekti.toUpperCase(),
-                          style: GoogleFonts.mulish(
-                            fontSize: SizeConfig.safeBlockVertical! * 1.5,
-                            fontWeight: FontWeight.w700,
-                            color: Theme.of(context).primaryColorDark,
-                          ),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (_, __, ___) => const Home(),
+                                    transitionDuration: Duration.zero,
+                                    reverseTransitionDuration: Duration.zero,
+                                  ),
+                                );
+                              },
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: Icon(
+                                  Icons.arrow_back_ios,
+                                  color: Theme.of(context).primaryColorDark,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: SizeConfig.safeBlockHorizontal! * 2,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!
+                                  .projekti
+                                  .toUpperCase(),
+                              style: GoogleFonts.mulish(
+                                fontSize: SizeConfig.safeBlockVertical! * 1.5,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).primaryColorDark,
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: SizeConfig.safeBlockVertical! * 2,
@@ -105,39 +158,55 @@ class _ShowcaseDetailsState extends State<ShowcaseDetails> {
                         SizedBox(
                           height: SizeConfig.safeBlockVertical! * 2,
                         ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical! * 78,
-                          child: ListView.builder(
-                            itemCount: titles.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: SizeConfig.safeBlockHorizontal!,
-                                  vertical: SizeConfig.safeBlockVertical! * 2,
-                                ),
-                                child: MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: ShowcaseItem(
-                                    title: titles[index],
-                                    text: texts[index],
-                                    url: links[index],
-                                  ),
+                        StreamBuilder(
+                          stream: _db.getAllProjects(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              }
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              }
+
+                              final projects = snapshot.data!;
+
+                              return SizedBox(
+                                height: SizeConfig.safeBlockVertical! * 78,
+                                child: ListView.builder(
+                                  itemCount: projects.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            SizeConfig.safeBlockHorizontal! * 2,
+                                        vertical:
+                                            SizeConfig.safeBlockVertical! * 2,
+                                      ),
+                                      child: MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: ShowcaseItem(
+                                          project: projects[index],
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               );
-                            },
-                          ),
+                            }
+                          },
                         ),
                       ],
                     )),
               ),
             ],
           ),
-        ),
-        tablet: Container(
-          color: Colors.red,
-        ),
-        mobile: Container(
-          color: Colors.blue,
         ),
       ),
     );

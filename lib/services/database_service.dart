@@ -35,7 +35,9 @@ class DatabaseService {
   Stream<List<Project>>? getAllProjects() {
     try {
       return _db.collection('projects').snapshots().map((snapshot) {
-        return snapshot.docs.map((doc) => Project.fromMap(doc.data())).toList();
+        var data =
+            snapshot.docs.map((doc) => Project.fromMap(doc.data())).toList();
+        return data;
       });
     } catch (e) {
       print(e);
