@@ -28,7 +28,7 @@ class _LandingState extends State<Landing> {
     'assets/images/mba.png',
     'assets/images/migg.png',
     'assets/images/madi.png',
-    'assets/images/mdg.png',
+    'assets/images/mdg.PNG',
     'assets/images/cet.jpg',
     'assets/images/kasmir.png',
     'assets/images/kenda.png',
@@ -144,7 +144,7 @@ class _LandingState extends State<Landing> {
                                   SizeConfig.safeBlockHorizontal! * 10),
                             ),
                             image: const DecorationImage(
-                              image: AssetImage('images/panels.jpg'),
+                              image: AssetImage('assets/images/panels.jpg'),
                               fit: BoxFit.cover,
                             ),
                           ),

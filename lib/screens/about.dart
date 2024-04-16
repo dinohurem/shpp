@@ -54,7 +54,7 @@ class About extends StatelessWidget {
                               SizeConfig.safeBlockHorizontal! * 20),
                         ),
                         image: const DecorationImage(
-                          image: AssetImage('images/panels2.jpg'),
+                          image: AssetImage('assets/images/panels2.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
