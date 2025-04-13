@@ -1,0 +1,6 @@
+# l10n.yaml
+arb-dir: lib/l10n
+template-arb-file: app_en.arb # Or app_bs.arb, whichever is your primary/template language
+output-localization-file: app_localizations.dart
+# Optional: Specify the output class name if you want something other than AppLocalizations
+# output-class: MyAppLocalizations

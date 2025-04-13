@@ -62,16 +62,17 @@ class _LoginState extends State<Login> {
   void initState() {
     super.initState();
     // Check if already logged in.
-    // TODO: Fix this.
     if (FirebaseAuth.instance.currentUser != null) {
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (_, __, ___) => const Admin(),
-          transitionDuration: Duration.zero,
-          reverseTransitionDuration: Duration.zero,
-        ),
-      );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const Admin(),
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
+          ),
+        );
+      });
     }
   }
 
