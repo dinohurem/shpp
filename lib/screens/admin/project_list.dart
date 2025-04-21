@@ -38,19 +38,6 @@ class _ProjectListState extends State<ProjectList> {
             ),
           ],
         ),
-        actions: [
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-            child: IconButton(
-              tooltip: 'Logout',
-              icon: const Icon(Icons.logout, size: 20),
-              onPressed: () {
-                // implement logout logic here
-              },
-            ),
-          )
-        ],
       ),
       body: StreamBuilder<List<Project>>(
         stream: _db.getAllProjects(),
