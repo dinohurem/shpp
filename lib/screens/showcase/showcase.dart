@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:shpp/models/project.dart';
 import 'package:shpp/screens/showcase/showcase_details.dart';
+import 'package:shpp/services/database_service.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,6 +22,7 @@ class Showcase extends StatefulWidget {
 }
 
 class _ShowcaseState extends State<Showcase> {
+  final DatabaseService _db = DatabaseService();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final double _topLeft = SizeConfig.safeBlockHorizontal! * 4;
   final double _topRight = SizeConfig.safeBlockHorizontal! * 4;
@@ -35,13 +37,11 @@ class _ShowcaseState extends State<Showcase> {
   final ScrollOffsetListener scrollOffsetListener =
       ScrollOffsetListener.create();
 
-  Future<List<Project>> fetchProjects() async {
-    QuerySnapshot querySnapshot = await firestore.collection('projects').get();
+  // Future<List<Project>> fetchProjects() async {
+  //   QuerySnapshot querySnapshot = await firestore.collection('projects').get();
 
-    return querySnapshot.docs.map((doc) {
-      return Project.fromMap(doc.data() as Map<String, dynamic>);
-    }).toList();
-  }
+  //   return _db.getAllProjects();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +70,8 @@ class _ShowcaseState extends State<Showcase> {
               ),
               SizedBox(
                 height: SizeConfig.safeBlockVertical! * 70,
-                child: FutureBuilder(
-                  future: fetchProjects(),
+                child: StreamBuilder(
+                  stream: _db.getAllProjects(),
                   builder: (streamContext, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
@@ -207,22 +207,7 @@ class _ShowcaseState extends State<Showcase> {
                                       ),
                                     ),
                                   ),
-                                )
-
-                                // ListView.builder(
-                                //   shrinkWrap: true,
-                                //   itemCount: projects.length,
-                                //   scrollDirection: Axis.horizontal,
-                                //   padding: EdgeInsets.symmetric(
-                                //     horizontal:
-                                //         SizeConfig.safeBlockHorizontal! * 3,
-                                //   ),
-                                //   itemBuilder:
-                                //       (BuildContext context, int index) {
-                                //     return ;
-                                //   },
-                                // )),
-                                ),
+                                )),
                           ),
                           InkWell(
                             onTap: () {

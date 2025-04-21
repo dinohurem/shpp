@@ -15,6 +15,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() async {
   // flutter build web --web-renderer canvaskit
   // flutter gen-l10n
+  // admin@shpp.ba
+  // password: admin1234
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(

@@ -43,34 +43,30 @@ class _AdminState extends State<Admin> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Admin'),
-        centerTitle: true,
+        centerTitle: false,
         actions: [
-          Center(
-            child: SizedBox(
-              width: SizeConfig.safeBlockHorizontal! * 10,
-              height: SizeConfig.safeBlockVertical! * 4,
-              child: ElevatedButton(
-                onPressed: () async {
-                  var navigator = Navigator.of(context);
-                  await AuthService().signOut();
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+              onPressed: () async {
+                var navigator = Navigator.of(context);
+                await AuthService().signOut();
 
-                  if (!mounted) return;
+                if (!mounted) return;
 
-                  navigator.pushReplacement(
-                    PageRouteBuilder(
-                      pageBuilder: (_, __, ___) => const Home(),
-                      transitionDuration: Duration.zero,
-                      reverseTransitionDuration: Duration.zero,
-                    ),
-                  );
-                },
-                child: Text(
-                  'Log Out',
-                  style: TextStyle(
-                    fontSize: SizeConfig.safeBlockVertical! * 2,
-                    fontWeight: FontWeight.w600,
+                navigator.pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => const Home(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
                   ),
-                ),
+                );
+              },
+              icon: const Icon(Icons.logout, size: 20),
+              label: const Text("Logout"),
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               ),
             ),
           ),

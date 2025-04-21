@@ -4,13 +4,16 @@ class Project {
   String subtitle;
   String content;
   List<String> urls;
+  final int order;
 
-  Project(
-      {required this.uid,
-      required this.title,
-      required this.subtitle,
-      required this.content,
-      required this.urls});
+  Project({
+    required this.uid,
+    required this.title,
+    required this.subtitle,
+    required this.content,
+    required this.urls,
+    this.order = 0,
+  });
 
   factory Project.fromMap(Map data) {
     return Project(
@@ -19,6 +22,7 @@ class Project {
       subtitle: data['subtitle'],
       content: data['content'],
       urls: List<String>.from(data['urls']),
+      order: data['order'] ?? 0,
     );
   }
 
@@ -29,6 +33,7 @@ class Project {
       'subtitle': subtitle,
       'content': content,
       'urls': urls,
+      'order': order,
     };
   }
 }

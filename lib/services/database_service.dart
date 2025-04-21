@@ -34,7 +34,11 @@ class DatabaseService {
   // Fetch all projects
   Stream<List<Project>>? getAllProjects() {
     try {
-      return _db.collection('projects').snapshots().map((snapshot) {
+      return _db
+          .collection('projects')
+          .orderBy('order')
+          .snapshots()
+          .map((snapshot) {
         var data =
             snapshot.docs.map((doc) => Project.fromMap(doc.data())).toList();
         return data;
@@ -42,6 +46,22 @@ class DatabaseService {
     } catch (e) {
       print(e);
       return null;
+    }
+  }
+
+  Future<void> updateProjectOrder(String uid, int newOrder) async {
+    // Check if document exists first
+    DocumentSnapshot docSnapshot =
+        await _db.collection('projects').doc(uid).get();
+
+    if (docSnapshot.exists) {
+      // Update existing document
+      return _db.collection('projects').doc(uid).update({
+        'order': newOrder,
+      });
+    } else {
+      // Create a blank document with just the order field if it doesn't exist
+      print('Document $uid does not exist, skipping update');
     }
   }
 
