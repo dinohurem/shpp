@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:shpp/shared/size_config.dart';
 
@@ -34,13 +35,24 @@ class GalleryItem extends StatelessWidget {
         onTap: () => Navigator.of(context).pop(),
         child: Center(
           child: Hero(
-            tag: imageUrl,
-            child: Image.network(
-              imageUrl,
-              width: MediaQuery.of(context).size.width * 0.7,
-              fit: BoxFit.contain,
-            ),
-          ),
+              tag: imageUrl,
+              child: FutureBuilder(
+                future: FirebaseStorage.instance.ref(imageUrl).getDownloadURL(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (snapshot.hasError || !snapshot.hasData) {
+                    return const Icon(Icons.broken_image,
+                        size: 60, color: Colors.red);
+                  }
+                  return Image.network(
+                    snapshot.data!,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    fit: BoxFit.contain,
+                  );
+                },
+              )),
         ),
       ),
     );

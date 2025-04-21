@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/models/project.dart';
@@ -55,13 +56,31 @@ class _GalleryState extends State<Gallery> {
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: SizedBox(
-                      width: SizeConfig.safeBlockHorizontal! * 15,
-                      height: SizeConfig.safeBlockVertical! * 15,
-                      child: Image.network(
-                        widget.project.urls[index],
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        width: SizeConfig.safeBlockHorizontal! * 15,
+                        height: SizeConfig.safeBlockVertical! * 15,
+                        child: FutureBuilder(
+                          future: FirebaseStorage.instance
+                              .ref(widget.project.urls[index])
+                              .getDownloadURL(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            if (snapshot.hasError || !snapshot.hasData) {
+                              return Container(
+                                color: Colors.grey[300],
+                                child: const Icon(Icons.broken_image,
+                                    color: Colors.red),
+                              );
+                            }
+                            return Image.network(
+                              snapshot.data!,
+                              fit: BoxFit.cover,
+                            );
+                          },
+                        )),
                   ),
                 ),
               );
