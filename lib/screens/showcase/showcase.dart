@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:shpp/models/project.dart';
 import 'package:shpp/screens/showcase/showcase_details.dart';
 import 'package:shpp/services/database_service.dart';
 import 'package:shpp/shared/action_button.dart';
@@ -37,11 +37,18 @@ class _ShowcaseState extends State<Showcase> {
   final ScrollOffsetListener scrollOffsetListener =
       ScrollOffsetListener.create();
 
-  // Future<List<Project>> fetchProjects() async {
-  //   QuerySnapshot querySnapshot = await firestore.collection('projects').get();
+  Future<String?> getImageUrl(String path) async {
+    try {
+      final downloadUrl =
+          await FirebaseStorage.instance.ref(path).getDownloadURL();
+      return downloadUrl;
+    } catch (e) {
+      print("Error getting image URL: $e");
+      return null;
+    }
+  }
 
-  //   return _db.getAllProjects();
-  // }
+  Map<int, String> imageUrls = {};
 
   @override
   Widget build(BuildContext context) {
@@ -103,111 +110,167 @@ class _ShowcaseState extends State<Showcase> {
                             child: SizedBox(
                                 height: SizeConfig.safeBlockVertical! * 60,
                                 child: ScrollablePositionedList.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: projects.length,
-                                  itemScrollController: itemScrollController,
-                                  scrollOffsetController:
-                                      scrollOffsetController,
-                                  itemPositionsListener: itemPositionsListener,
-                                  scrollOffsetListener: scrollOffsetListener,
-                                  itemBuilder: (context, index) => Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          SizeConfig.safeBlockHorizontal! * 2,
-                                    ),
-                                    child: MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: Stack(
-                                        children: [
-                                          Container(
-                                            height:
-                                                SizeConfig.safeBlockVertical! *
-                                                    60,
-                                            width: SizeConfig
-                                                    .safeBlockHorizontal! *
-                                                55,
-                                            decoration: BoxDecoration(
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  spreadRadius: 2,
-                                                  blurRadius: 3,
-                                                ),
-                                              ],
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(SizeConfig
-                                                        .safeBlockHorizontal! *
-                                                    5),
-                                              ),
-                                              image: DecorationImage(
-                                                image: projects[index]
-                                                        .urls
-                                                        .isNotEmpty
-                                                    ? projects[index]
-                                                            .urls[0]
-                                                            .contains('http')
-                                                        ? NetworkImage(
-                                                            projects[index]
-                                                                .urls[0],
-                                                          )
-                                                        : AssetImage(
-                                                            projects[index]
-                                                                .urls[0],
-                                                          ) as ImageProvider<
-                                                            Object>
-                                                    : const AssetImage(
-                                                            'assets/images/panels.jpg')
-                                                        as ImageProvider<
-                                                            Object>,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            bottom:
-                                                SizeConfig.safeBlockVertical! *
-                                                    10,
-                                            child: Container(
-                                              width: SizeConfig
-                                                      .safeBlockHorizontal! *
-                                                  15,
-                                              decoration: BoxDecoration(
-                                                color: Theme.of(context)
-                                                    .primaryColorLight
-                                                    .withOpacity(0.7),
-                                                borderRadius: BorderRadius.only(
-                                                  topRight: Radius.circular(
-                                                      _topRight),
-                                                  bottomRight: Radius.circular(
-                                                      _bottomRight),
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.only(
-                                                  left: SizeConfig
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: projects.length,
+                                    itemScrollController: itemScrollController,
+                                    scrollOffsetController:
+                                        scrollOffsetController,
+                                    itemPositionsListener:
+                                        itemPositionsListener,
+                                    scrollOffsetListener: scrollOffsetListener,
+                                    itemBuilder: (context, index) {
+                                      final project = projects[index];
+                                      final urlPath = project.urls.isNotEmpty
+                                          ? project.urls[0]
+                                          : '';
+
+                                      // CASE 1: If the URL is a full http URL, use it directly without Firebase
+                                      if (urlPath.startsWith('http')) {
+                                        imageUrls[index] = urlPath;
+                                      }
+
+                                      return Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              SizeConfig.safeBlockHorizontal! *
+                                                  2,
+                                        ),
+                                        child: MouseRegion(
+                                          cursor: SystemMouseCursors.click,
+                                          child: Stack(
+                                            children: [
+                                              // CASE 2: Already cached
+                                              if (imageUrls.containsKey(index))
+                                                Container(
+                                                  height: SizeConfig
+                                                          .safeBlockVertical! *
+                                                      60,
+                                                  width: SizeConfig
                                                           .safeBlockHorizontal! *
-                                                      2,
+                                                      55,
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.grey
+                                                            .withOpacity(0.5),
+                                                        spreadRadius: 2,
+                                                        blurRadius: 3,
+                                                      ),
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(SizeConfig
+                                                              .safeBlockHorizontal! *
+                                                          5),
+                                                    ),
+                                                    image: DecorationImage(
+                                                      image: NetworkImage(
+                                                          imageUrls[index]!),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                )
+                                              else
+                                                // CASE 3: Not yet cached, load it once
+                                                FutureBuilder<String?>(
+                                                  future: getImageUrl(urlPath),
+                                                  builder: (context, snapshot) {
+                                                    ImageProvider image;
+
+                                                    if (snapshot.connectionState ==
+                                                            ConnectionState
+                                                                .done &&
+                                                        snapshot.hasData &&
+                                                        snapshot.data != null &&
+                                                        snapshot
+                                                            .data!.isNotEmpty) {
+                                                      imageUrls[index] =
+                                                          snapshot.data!;
+                                                      image = NetworkImage(
+                                                          snapshot.data!);
+                                                    } else {
+                                                      image = const AssetImage(
+                                                          "assets/images/panels.jpg");
+                                                    }
+
+                                                    return Container(
+                                                      height: SizeConfig
+                                                              .safeBlockVertical! *
+                                                          60,
+                                                      width: SizeConfig
+                                                              .safeBlockHorizontal! *
+                                                          55,
+                                                      decoration: BoxDecoration(
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            spreadRadius: 2,
+                                                            blurRadius: 3,
+                                                          ),
+                                                        ],
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                          Radius.circular(SizeConfig
+                                                                  .safeBlockHorizontal! *
+                                                              5),
+                                                        ),
+                                                        image: DecorationImage(
+                                                          image: image,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
                                                 ),
-                                                child: Text(
-                                                  projects[index].title,
-                                                  style: GoogleFonts.mulish(
-                                                    fontSize: SizeConfig
-                                                            .safeBlockVertical! *
-                                                        2.5,
-                                                    fontWeight: FontWeight.w700,
+                                              Positioned(
+                                                bottom: SizeConfig
+                                                        .safeBlockVertical! *
+                                                    10,
+                                                child: Container(
+                                                  width: SizeConfig
+                                                          .safeBlockHorizontal! *
+                                                      15,
+                                                  decoration: BoxDecoration(
                                                     color: Theme.of(context)
-                                                        .primaryColorDark,
+                                                        .primaryColorLight
+                                                        .withOpacity(0.7),
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      topRight: Radius.circular(
+                                                          _topRight),
+                                                      bottomRight:
+                                                          Radius.circular(
+                                                              _bottomRight),
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: SizeConfig
+                                                              .safeBlockHorizontal! *
+                                                          2,
+                                                    ),
+                                                    child: Text(
+                                                      project.title,
+                                                      style: GoogleFonts.mulish(
+                                                        fontSize: SizeConfig
+                                                                .safeBlockVertical! *
+                                                            2.5,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Theme.of(context)
+                                                            .primaryColorDark,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )),
+                                        ),
+                                      );
+                                    })),
                           ),
                           InkWell(
                             onTap: () {

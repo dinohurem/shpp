@@ -144,7 +144,7 @@ class _ContactState extends State<Contact> {
                                         SizeConfig.safeBlockHorizontal! * 0.5,
                                   ),
                                   Text(
-                                    'Safvet-bega Bašagića 24\n71000 Sarajevo\nBosna i Hercegovina',
+                                    'Kasima ef. Dobrače 17\n71000 Sarajevo\nBosna i Hercegovina',
                                     style: GoogleFonts.mulish(
                                       fontSize:
                                           SizeConfig.safeBlockVertical! * 1.5,

@@ -55,7 +55,7 @@ class _ProjectListState extends State<ProjectList> {
       body: StreamBuilder<List<Project>>(
         stream: _db.getAllProjects(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) return Text('Error: \${snapshot.error}');
+          if (snapshot.hasError) return const Text('Error: \${snapshot.error}');
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }

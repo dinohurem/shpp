@@ -19,6 +19,7 @@ class IconCard extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Icon(

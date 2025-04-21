@@ -16,68 +16,6 @@ class ShowcaseDetails extends StatefulWidget {
 class _ShowcaseDetailsState extends State<ShowcaseDetails> {
   final DatabaseService _db = DatabaseService();
 
-  var titles = [
-    //dhl
-    //travnik
-    'Ferplast d.o.o',
-    'MBA d.o.o.',
-    'OMC d.o.o.',
-    'Jerry d.o.o.',
-    'Promo d.o.o.',
-    'Saplast d.o.o.',
-    'Alufinal d.o.o.',
-    'Eurotrans d.o.o.',
-    'Eurotrans d.o.o.',
-    'Mlin Nezić d.o.o.',
-    'Rolling d.o.o.',
-    'SHPP d.o.o.',
-    'Genena d.o.o.',
-    'Sedžan d.o.o.',
-    'Bošnjak Velika Kladuša d.o.o.',
-    'Crni stovarište d.o.o.',
-    'Crvena Jabuka Cazin d.o.o.',
-    'Kenda d.o.o.',
-    'CetBah d.o.o.',
-    'Tehnika d.o.o.',
-    'Edelstahl d.o.o.',
-    'MDG International d.o.o.',
-    'Mostar Express d.o.o.',
-  ];
-
-  var texts = [
-    'Ferplast d.o.o tekst',
-    'MBA d.o.o. tekst',
-    'OMC d.o.o. tekst',
-    'Jerry d.o.o. tekst',
-    'Promo d.o.o. tekst',
-    'Saplast d.o.o. tekst',
-    'Alufinal d.o.o. tekst',
-    'Eurotrans d.o.o. tekst',
-    'Eurotrans d.o.o. tekst',
-    'Mlin Nezić d.o.o. tekst',
-    'Rolling d.o.o. tekst',
-    'SHPP d.o.o. tekst',
-    'Genena d.o.o. tekst',
-    'Sedžan d.o.o. tekst',
-    'Bošnjak Velika Kladuša d.o.o. tekst',
-    'Crni stovarište d.o.o. tekst',
-    'Crvena Jabuka Cazin d.o.o. tekst',
-    'Kenda d.o.o. tekst',
-    'CetBah d.o.o. tekst',
-    'Tehnika d.o.o. tekst',
-    'Edelstahl d.o.o. tekst',
-    'MDG International d.o.o. tekst',
-    'Mostar Express d.o.o. tekst',
-  ];
-
-  var links = [
-    'assets/images/news1.png',
-    'assets/images/news1.png',
-    'assets/images/news3.jpg',
-    'assets/images/news1.png',
-    'assets/images/news5.png',
-  ];
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

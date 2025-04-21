@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               SizedBox(
-                height: SizeConfig.safeBlockVertical! * 4,
+                height: SizeConfig.safeBlockVertical! * 5,
                 width: SizeConfig.safeBlockHorizontal! * 10,
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
@@ -112,7 +112,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(
-                height: SizeConfig.safeBlockVertical! * 4,
+                height: SizeConfig.safeBlockVertical! * 5,
                 width: SizeConfig.safeBlockHorizontal! * 10,
                 child: TextFormField(
                   validator: (input) {
