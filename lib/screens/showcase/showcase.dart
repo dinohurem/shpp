@@ -8,7 +8,7 @@ import 'package:shpp/screens/showcase/showcase_details.dart';
 import 'package:shpp/services/database_service.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/size_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class Showcase extends StatefulWidget {
   GlobalKey globalKey;
@@ -37,18 +37,20 @@ class _ShowcaseState extends State<Showcase> {
   final ScrollOffsetListener scrollOffsetListener =
       ScrollOffsetListener.create();
 
-  Future<String?> getImageUrl(String path) async {
-    try {
-      final downloadUrl =
-          await FirebaseStorage.instance.ref(path).getDownloadURL();
-      return downloadUrl;
-    } catch (e) {
-      print("Error getting image URL: $e");
-      return null;
-    }
-  }
+  final Map<String, Future<String?>> _urlFutures = {};
 
-  Map<int, String> imageUrls = {};
+  Future<String?> _resolveUrl(String path) {
+    if (path.isEmpty) return Future.value(null);
+    if (path.startsWith('http')) return Future.value(path);
+    return _urlFutures.putIfAbsent(path, () async {
+      try {
+        return await FirebaseStorage.instance.ref(path).getDownloadURL();
+      } catch (e) {
+        print("Error getting image URL: $e");
+        return null;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,7 @@ class _ShowcaseState extends State<Showcase> {
                                   duration: const Duration(seconds: 2),
                                   curve: Curves.easeInOutCubic);
                             },
-                            child: const Icon(
+                            child: const FaIcon(
                               FontAwesomeIcons.arrowLeft,
                             ),
                           ),
@@ -124,11 +126,6 @@ class _ShowcaseState extends State<Showcase> {
                                           ? project.urls[0]
                                           : '';
 
-                                      // CASE 1: If the URL is a full http URL, use it directly without Firebase
-                                      if (urlPath.startsWith('http')) {
-                                        imageUrls[index] = urlPath;
-                                      }
-
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                           horizontal:
@@ -139,91 +136,50 @@ class _ShowcaseState extends State<Showcase> {
                                           cursor: SystemMouseCursors.click,
                                           child: Stack(
                                             children: [
-                                              // CASE 2: Already cached
-                                              if (imageUrls.containsKey(index))
-                                                Container(
-                                                  height: SizeConfig
-                                                          .safeBlockVertical! *
-                                                      60,
-                                                  width: SizeConfig
-                                                          .safeBlockHorizontal! *
-                                                      55,
-                                                  decoration: BoxDecoration(
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        color: Colors.grey
-                                                            .withOpacity(0.5),
-                                                        spreadRadius: 2,
-                                                        blurRadius: 3,
-                                                      ),
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(SizeConfig
-                                                              .safeBlockHorizontal! *
-                                                          5),
-                                                    ),
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(
-                                                          imageUrls[index]!),
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                )
-                                              else
-                                                // CASE 3: Not yet cached, load it once
-                                                FutureBuilder<String?>(
-                                                  future: getImageUrl(urlPath),
-                                                  builder: (context, snapshot) {
-                                                    ImageProvider image;
+                                              FutureBuilder<String?>(
+                                                future: _resolveUrl(urlPath),
+                                                builder: (context, snapshot) {
+                                                  final resolved =
+                                                      snapshot.data;
+                                                  final ImageProvider image =
+                                                      (resolved != null &&
+                                                              resolved
+                                                                  .isNotEmpty)
+                                                          ? NetworkImage(
+                                                              resolved) as ImageProvider
+                                                          : const AssetImage(
+                                                              "assets/images/panels.jpg");
 
-                                                    if (snapshot.connectionState ==
-                                                            ConnectionState
-                                                                .done &&
-                                                        snapshot.hasData &&
-                                                        snapshot.data != null &&
-                                                        snapshot
-                                                            .data!.isNotEmpty) {
-                                                      imageUrls[index] =
-                                                          snapshot.data!;
-                                                      image = NetworkImage(
-                                                          snapshot.data!);
-                                                    } else {
-                                                      image = const AssetImage(
-                                                          "assets/images/panels.jpg");
-                                                    }
-
-                                                    return Container(
-                                                      height: SizeConfig
-                                                              .safeBlockVertical! *
-                                                          60,
-                                                      width: SizeConfig
-                                                              .safeBlockHorizontal! *
-                                                          55,
-                                                      decoration: BoxDecoration(
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            spreadRadius: 2,
-                                                            blurRadius: 3,
-                                                          ),
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                          Radius.circular(SizeConfig
-                                                                  .safeBlockHorizontal! *
-                                                              5),
+                                                  return Container(
+                                                    height: SizeConfig
+                                                            .safeBlockVertical! *
+                                                        60,
+                                                    width: SizeConfig
+                                                            .safeBlockHorizontal! *
+                                                        55,
+                                                    decoration: BoxDecoration(
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          color: Colors.grey
+                                                              .withOpacity(0.5),
+                                                          spreadRadius: 2,
+                                                          blurRadius: 3,
                                                         ),
-                                                        image: DecorationImage(
-                                                          image: image,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(SizeConfig
+                                                                .safeBlockHorizontal! *
+                                                            5),
                                                       ),
-                                                    );
-                                                  },
-                                                ),
+                                                      image: DecorationImage(
+                                                        image: image,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
                                               Positioned(
                                                 bottom: SizeConfig
                                                         .safeBlockVertical! *
@@ -279,7 +235,7 @@ class _ShowcaseState extends State<Showcase> {
                                   duration: const Duration(seconds: 2),
                                   curve: Curves.easeInOutCubic);
                             },
-                            child: const Icon(
+                            child: const FaIcon(
                               FontAwesomeIcons.arrowRight,
                             ),
                           )

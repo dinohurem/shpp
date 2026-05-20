@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/size_config.dart';
 
 class IconCardAbout extends StatelessWidget {
   final String title;
   final String text;
-  final IconData icon;
+  final FaIconData icon;
   final bool narrowText;
   const IconCardAbout({
     super.key,
@@ -21,7 +22,7 @@ class IconCardAbout extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
+        FaIcon(
           icon,
           color: Theme.of(context).primaryColorDark,
           size: SizeConfig.safeBlockVertical! * 3,

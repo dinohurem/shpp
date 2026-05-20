@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class Contact extends StatefulWidget {
   GlobalKey globalKey;
@@ -82,7 +82,7 @@ class _ContactState extends State<Contact> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  FaIcon(
                                     FontAwesomeIcons.phone,
                                     size: SizeConfig.safeBlockVertical! * 2,
                                     color: Theme.of(context).primaryColorDark,
@@ -108,7 +108,7 @@ class _ContactState extends State<Contact> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  FaIcon(
                                     FontAwesomeIcons.envelope,
                                     size: SizeConfig.safeBlockVertical! * 2,
                                     color: Theme.of(context).primaryColorDark,
@@ -134,7 +134,7 @@ class _ContactState extends State<Contact> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  FaIcon(
                                     FontAwesomeIcons.locationDot,
                                     size: SizeConfig.safeBlockVertical! * 2,
                                     color: Theme.of(context).primaryColorDark,
@@ -166,7 +166,7 @@ class _ContactState extends State<Contact> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  FaIcon(
                                     FontAwesomeIcons.phone,
                                     size: SizeConfig.safeBlockVertical! * 2,
                                     color: Theme.of(context).primaryColorDark,
@@ -193,7 +193,7 @@ class _ContactState extends State<Contact> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  FaIcon(
                                     FontAwesomeIcons.envelope,
                                     size: SizeConfig.safeBlockVertical! * 2,
                                     color: Theme.of(context).primaryColorDark,
@@ -224,7 +224,7 @@ class _ContactState extends State<Contact> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(
+                                  FaIcon(
                                     FontAwesomeIcons.phone,
                                     size: SizeConfig.safeBlockVertical! * 2,
                                     color: Theme.of(context).primaryColorDark,

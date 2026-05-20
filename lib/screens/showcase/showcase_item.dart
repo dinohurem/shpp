@@ -5,7 +5,7 @@ import 'package:shpp/services/storage_service.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/icon_card_showcase.dart';
 import 'package:shpp/shared/size_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class ShowcaseItem extends StatelessWidget {
   final Project project;

@@ -124,7 +124,7 @@ class _HomeState extends State<Home> {
                   );
                 });
               },
-              child: Icon(
+              child: FaIcon(
                 FontAwesomeIcons.chevronUp,
                 color: Theme.of(context).primaryColorDark,
                 size: SizeConfig.safeBlockVertical! * 2,

@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:shpp/config/firebase_options.dart';
 import 'package:shpp/screens/home.dart';
 import 'package:shpp/services/app_language.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 void main() async {
   // flutter build web --web-renderer canvaskit

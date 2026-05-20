@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/action_button.dart';
 import 'package:shpp/shared/carousel_with_wrap_around.dart';
 import 'package:shpp/shared/size_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class Landing extends StatefulWidget {
   final GlobalKey aboutKey;

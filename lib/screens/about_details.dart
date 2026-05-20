@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/size_config.dart';
 import 'package:visibility_detector/visibility_detector.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class AboutDetails extends StatefulWidget {
   const AboutDetails({
@@ -77,7 +77,7 @@ class _AboutDetailsState extends State<AboutDetails>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        FaIcon(
                           FontAwesomeIcons.bolt,
                           size: SizeConfig.safeBlockVertical! * 3,
                         ),
@@ -133,7 +133,7 @@ class _AboutDetailsState extends State<AboutDetails>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        FaIcon(
                           FontAwesomeIcons.solarPanel,
                           size: SizeConfig.safeBlockVertical! * 3,
                         ),
@@ -189,7 +189,7 @@ class _AboutDetailsState extends State<AboutDetails>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        FaIcon(
                           FontAwesomeIcons.landmark,
                           size: SizeConfig.safeBlockVertical! * 3,
                         ),

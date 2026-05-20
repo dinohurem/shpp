@@ -90,7 +90,7 @@ class _NewsState extends State<News> {
                               duration: const Duration(seconds: 1),
                               curve: Curves.easeIn);
                         },
-                        child: const Icon(
+                        child: const FaIcon(
                           FontAwesomeIcons.arrowLeft,
                         )),
                     Flexible(
@@ -134,7 +134,7 @@ class _NewsState extends State<News> {
                               duration: const Duration(seconds: 1),
                               curve: Curves.easeIn);
                         },
-                        child: const Icon(
+                        child: const FaIcon(
                           FontAwesomeIcons.arrowRight,
                         )),
                   ],

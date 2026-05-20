@@ -6,7 +6,7 @@ import 'package:shpp/screens/admin/login.dart';
 import 'package:shpp/services/app_language.dart';
 import 'package:shpp/shared/navbar_option.dart';
 import 'package:shpp/shared/size_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class Navbar extends StatelessWidget {
   final Function(int index) onOptionSelected;
@@ -129,7 +129,7 @@ class Navbar extends StatelessWidget {
             },
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
-              child: Icon(
+              child: FaIcon(
                 FontAwesomeIcons.userShield,
                 size: SizeConfig.safeBlockVertical! * 1.25,
                 color: Theme.of(context).primaryColorDark,

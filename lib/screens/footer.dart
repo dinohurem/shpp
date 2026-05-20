@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shpp/shared/navbar_option.dart';
 import 'package:shpp/shared/size_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shpp/l10n/app_localizations.dart';
 
 class Footer extends StatefulWidget {
   final Function(int index) onOptionSelected;
@@ -119,7 +119,7 @@ class _FooterState extends State<Footer> {
                       'https://www.facebook.com/profile.php?id=100095698955411',
                       'facebook');
                 },
-                child: Icon(
+                child: FaIcon(
                   FontAwesomeIcons.facebook,
                   size: SizeConfig.safeBlockVertical! * 2,
                   color: _isHovering[0]
@@ -140,7 +140,7 @@ class _FooterState extends State<Footer> {
                   html.window.open(
                       'https://www.instagram.com/shppsarajevo/', 'instagram');
                 },
-                child: Icon(
+                child: FaIcon(
                   FontAwesomeIcons.instagram,
                   size: SizeConfig.safeBlockVertical! * 2,
                   color: _isHovering[1]
@@ -162,7 +162,7 @@ class _FooterState extends State<Footer> {
                       'https://www.linkedin.com/company/shpp-d-o-o-sarajevo/',
                       'linkedIn');
                 },
-                child: Icon(
+                child: FaIcon(
                   FontAwesomeIcons.linkedinIn,
                   size: SizeConfig.safeBlockVertical! * 2,
                   color: _isHovering[2]
@@ -192,7 +192,7 @@ class _FooterState extends State<Footer> {
                     ),
                   ),
                 ),
-                Icon(
+                FaIcon(
                   FontAwesomeIcons.copyright,
                   size: SizeConfig.safeBlockVertical! * 1.5,
                   color: Theme.of(context).primaryColorDark,
